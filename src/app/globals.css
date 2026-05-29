@@ -1,0 +1,264 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: oklch(0.952 0.018 92.7);
+  --color-shell: oklch(0.978 0.015 94.2);
+  --color-mist: oklch(0.919 0.026 118.9);
+  --color-ink: oklch(0.242 0.021 164.5);
+  --color-moss: oklch(0.408 0.061 161.2);
+  --color-sage: oklch(0.726 0.076 124.3);
+  --color-clay: oklch(0.633 0.124 43.9);
+  --color-harvest: oklch(0.787 0.099 84.9);
+  --color-lichen: oklch(0.839 0.051 124.6);
+  --color-smoke: oklch(0.858 0.018 100);
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --ease-heavy: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-paper);
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 8% -10%, color-mix(in oklch, var(--color-sage) 28%, transparent), transparent 34rem),
+    radial-gradient(circle at 86% 12%, color-mix(in oklch, var(--color-clay) 16%, transparent), transparent 28rem),
+    var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image:
+    linear-gradient(115deg, color-mix(in oklch, var(--color-ink) 24%, transparent) 0 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in oklch, var(--color-ink) 18%, transparent) 0 1px, transparent 1px);
+  background-size: 38px 38px, 19px 19px;
+  mix-blend-mode: multiply;
+}
+
+::selection {
+  background: var(--color-harvest);
+  color: var(--color-ink);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.page-shell {
+  width: min(calc(100vw - 2rem), 1480px);
+  max-width: calc(100vw - 2rem);
+  margin-inline: auto;
+}
+
+.section-pad {
+  padding-block: clamp(5rem, 9vw, 10rem);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid color-mix(in oklch, var(--color-ink) 16%, transparent);
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  color: color-mix(in oklch, var(--color-ink) 72%, transparent);
+  font-size: 0.69rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.96;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: 2.7rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.heading-md {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.copy-lg {
+  font-size: 1.05rem;
+  line-height: 1.58;
+  color: color-mix(in oklch, var(--color-ink) 74%, transparent);
+}
+
+.copy {
+  line-height: 1.66;
+  color: color-mix(in oklch, var(--color-ink) 70%, transparent);
+}
+
+.noise-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.noise-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: radial-gradient(color-mix(in oklch, var(--color-ink) 40%, transparent) 0.7px, transparent 0.7px);
+  background-size: 8px 8px;
+}
+
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 4px;
+}
+
+.focus-ring:focus-visible {
+  outline-color: var(--color-clay);
+}
+
+.animated-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 600ms var(--ease-expo);
+}
+
+.animated-underline:hover,
+.animated-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+.page-enter {
+  animation: page-enter 700ms var(--ease-expo) both;
+}
+
+.hero-enter {
+  animation: hero-enter 900ms var(--ease-expo) both;
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (min-width: 48rem) {
+  .display-xl {
+    font-size: 5.7rem;
+  }
+
+  .display-lg {
+    font-size: 4.1rem;
+  }
+
+  .heading-md {
+    font-size: 2.85rem;
+  }
+
+  .copy-lg {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 80rem) {
+  .display-xl {
+    font-size: 7.55rem;
+  }
+
+  .display-lg {
+    font-size: 5.35rem;
+  }
+
+  .heading-md {
+    font-size: 3.45rem;
+  }
+
+  .copy-lg {
+    font-size: 1.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-enter {
+    animation: none;
+  }
+
+  .page-enter {
+    animation: none;
+  }
+}
