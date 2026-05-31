@@ -9,7 +9,7 @@ export const alumni: Alumnus[] = [
   // Class of 2024
   { name: "Annie Lin", role: "Founder and President", years: "2020-2024", classYear: 2024 },
   { name: "Grace Ling", role: "Treasurer and VP of MedShare Volunteering", years: "2022-2024", classYear: 2024 },
-  { name: "Jason Zhang", role: "Secretary", years: "2022-2024", classYear: 2024 },
+  { name: "Jason Zhang", years: "2022-2024", classYear: 2024 },
   { name: "Carol Li", role: "VP of Food Bank Volunteering", years: "2022-2024", classYear: 2024 },
   { name: "Rachel Li", role: "VP of Culture and Diversity", years: "2023-2024", classYear: 2024 },
   { name: "Karen Yan", role: "Founding member", classYear: 2024 },

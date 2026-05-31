@@ -1,5 +1,4 @@
 import { UsersThree } from "@phosphor-icons/react/dist/ssr";
-import { LightGraphic } from "@/components/ui/LightGraphic";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { alumni } from "@/content/alumni";
@@ -33,33 +32,26 @@ export default function TeamPage() {
     <>
       <PageHero
         eyebrow="Team"
-        title="Leadership first, with the full record preserved."
+        title="Students run the operations, outreach, design, and service calendar."
         description="First Step Team is organized by student leaders, alumni continuity, and a broad K to 12 volunteer community across Metro Atlanta."
+        motif="person-step"
       />
 
       <section className="px-4 pb-20 md:pb-28">
         <div className="page-shell">
-          <div className="mb-10 flex items-center gap-4 border-t border-ink/14 pt-10 text-xs font-extrabold uppercase text-ink/50">
-            <span>Leadership directory</span>
-            <span className="h-px flex-1 bg-ink/14" />
-            <span>Current team</span>
-          </div>
-          <Reveal className="mb-12 grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
-            <div>
-              <span className="eyebrow">Current leadership</span>
-              <h2 className="heading-md mt-6">Students run the operations, outreach, design, and service calendar.</h2>
-            </div>
-            <div className="grid gap-6">
-              <p className="copy-lg">
-                Leadership roles are shown with responsibilities so families can see how the team is structured and how service turns into repeatable action.
-              </p>
-              <LightGraphic className="hidden lg:block" />
-            </div>
+          <Reveal className="mb-6">
+            <span className="eyebrow">Leadership team</span>
+            <p className="copy mt-4 max-w-2xl text-sm">
+              Operations, outreach, records, fundraising, events, design, and service programs.
+            </p>
           </Reveal>
-
           <div className="grid gap-5 lg:grid-cols-2">
             {leadership.map((leader, index) => (
-              <Reveal key={`${leader.name}-${leader.role}`} delay={index * 0.025} className="rounded-[1.5rem] border border-ink/10 bg-shell p-6">
+              <Reveal
+                key={`${leader.name}-${leader.role}`}
+                delay={index * 0.025}
+                className="rounded-[1.5rem] border border-ink/10 bg-shell p-6"
+              >
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="font-display text-2xl font-bold">{leader.name}</h3>
@@ -87,7 +79,6 @@ export default function TeamPage() {
           <Reveal>
             <span className="eyebrow">Alumni</span>
             <h2 className="heading-md mt-6">The continuity record comes next.</h2>
-            <p className="copy mt-5">Alumni are preserved before the full roster, as requested.</p>
           </Reveal>
           <div className="grid gap-6">
             {Object.entries(alumniByYear)
@@ -118,9 +109,7 @@ export default function TeamPage() {
           <Reveal className="mb-10 max-w-3xl">
             <span className="eyebrow">Member roster</span>
             <h2 className="heading-md mt-6">A compact archive of the broader volunteer community.</h2>
-            <p className="copy mt-4">
-              This public roster lists student names, schools when available, and graduation years. Contact information and waiver details are intentionally not published.
-            </p>
+            <p className="copy mt-4">Student names are grouped by graduation year for quick scanning.</p>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-2">
             {Object.entries(membersByYear)

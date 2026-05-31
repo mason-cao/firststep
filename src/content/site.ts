@@ -35,7 +35,7 @@ export const impactStats = [
 export const programs = [
   {
     title: "Clean Environment",
-    label: "3k+ lbs in one cleanup",
+    label: "3k+ lbs overall cleared",
     description:
       "River, lake, park, street, and neighborhood cleanups that turn local places into shared responsibility.",
     Icon: Leaf,

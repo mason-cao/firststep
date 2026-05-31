@@ -6,32 +6,43 @@ export interface Leader {
 
 export const leadership: Leader[] = [
   {
-    name: "Angela Zhou & Dennis Xu",
-    role: "Co-Presidents",
+    name: "Dennis Xu",
+    role: "Co-President & VP of First Step Fundraising and Entrepreneurship",
     responsibilities: [
       "Oversee team operations and communication",
-      "Actively seek new volunteer opportunities, funding, external collaborations, and more",
+      "Seek new volunteer opportunities, funding, and external collaborations",
       "Initiate new projects",
+      "Lead First Step fundraising, including yard sales, lemonade stands, bake sales, and holiday markets",
     ],
   },
   {
-    name: "Brady Zhou",
-    role: "President-Elect",
+    name: "Angela Zhou",
+    role: "Co-President & VP of Team Building",
     responsibilities: [
       "Oversee team operations and communication",
-      "Actively seek new volunteer opportunities, funding, external collaborations, and more",
+      "Seek new volunteer opportunities, funding, and external collaborations",
       "Initiate new projects",
+      "Organize team building activities during summer break, Labor Day, and winter break",
     ],
   },
   {
     name: "Mason Cao",
-    role: "Secretary & VP of Social Media",
+    role: "Secretary & Webmaster",
     responsibilities: [
-      "Keep track of member information",
-      "Record meeting minutes",
-      "Apply for awards for team members",
-      "Compile end-of-year reports",
-      "Built and maintains this website",
+      "Keep track of member logistics and information",
+      "Track meeting minutes and compile end-of-year reports",
+      "Apply for awards for all volunteers",
+      "Manage incoming and outgoing volunteer communications and maintain this website",
+    ],
+  },
+  {
+    name: "Brady Zhou",
+    role: "President-Elect & VP of Outreach",
+    responsibilities: [
+      "Oversee team operations and communication",
+      "Grow partnerships through outreach initiatives in East Cobb and Metro Atlanta",
+      "Organize Chattahoochee Nature Center activities",
+      "Initiate new projects",
     ],
   },
   {
@@ -51,28 +62,11 @@ export const leadership: Leader[] = [
     ],
   },
   {
-    name: "Dennis Xu",
-    role: "VP of First Step Fundraising & Entrepreneurship",
-    responsibilities: [
-      "Organize events to raise money for First Step",
-      "Spring and fall neighborhood yard sales",
-      "Summer lemonade stand and bake sales, Holiday market",
-    ],
-  },
-  {
     name: "Sophie Zhou",
     role: "VP of Food Bank Activities & Co-VP of Public Speaking Workshops",
     responsibilities: [
       "Organize team trips to local food banks",
       "Feed My Starving Children and similar events",
-    ],
-  },
-  {
-    name: "Brady Zhou",
-    role: "VP of Outreach",
-    responsibilities: [
-      "Grow partnerships through outreach initiatives in East Cobb and Metro Atlanta",
-      "Organize CNC activities",
     ],
   },
   {
@@ -90,18 +84,12 @@ export const leadership: Leader[] = [
   },
   {
     name: "Claire Ling",
-    role: "Treasurer & VP of MedShare Activities",
+    role: "Treasurer, VP of Social Media & VP of MedShare Activities",
     responsibilities: [
       "Keep tracking income and expenses",
       "Reimburse and transfer money",
+      "Coordinate First Step social media updates",
       "Organize team trips to MedShare",
-    ],
-  },
-  {
-    name: "Angela Zhou",
-    role: "VP of Team Building",
-    responsibilities: [
-      "Organize team building activities during summer break, Labor Day, and winter break",
     ],
   },
   {
