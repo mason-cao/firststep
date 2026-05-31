@@ -1,5 +1,4 @@
 import { ArrowUpRight, FileText, GlobeHemisphereWest, Handshake, Microscope } from "@phosphor-icons/react/dist/ssr";
-import { LightGraphic } from "@/components/ui/LightGraphic";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { resources } from "@/content/resources";
@@ -22,6 +21,7 @@ export default function ResourcesPage() {
         eyebrow="Resources"
         title="Team documents, research links, and partner programs."
         description="A practical library for members, families, and volunteers who need forms, project links, and clean-up program information."
+        motif="map"
       />
 
       <section id="documents" className="px-4 pb-24">
@@ -29,7 +29,6 @@ export default function ResourcesPage() {
           <Reveal>
             <span className="eyebrow">Documents</span>
             <h2 className="heading-md mt-6">Core team documents for families and members.</h2>
-            <LightGraphic className="mt-8 hidden lg:block" />
           </Reveal>
           <div className="grid gap-4">
             {documents.map((doc, index) => (

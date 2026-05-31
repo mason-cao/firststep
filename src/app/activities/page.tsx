@@ -41,6 +41,7 @@ export default function ActivitiesPage() {
         eyebrow="Activity ledger"
         title="A chronological record of service, cleanups, fundraising, and youth leadership."
         description="Filter the public activity archive by year or search across event titles, dates, and descriptions."
+        motif="path"
       />
 
       <section className="px-4 pb-24">

@@ -17,6 +17,7 @@ export default function ContactPage() {
         eyebrow="Contact"
         title="Start with a clear message, and the team can help with the next step."
         description="Families, students, and community partners can contact First Step Team by email. Instagram is available for public updates."
+        motif="envelope"
       />
 
       <section className="px-4 pb-24">

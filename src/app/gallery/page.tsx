@@ -29,6 +29,7 @@ export default function GalleryPage() {
         eyebrow="Photo gallery"
         title="A visual record of service, performances, cleanups, and team life."
         description="The gallery is shaped as an immersive image wall with a keyboard-accessible lightbox for the team archive."
+        motif="frames"
       />
 
       <section className="px-4 pb-24">

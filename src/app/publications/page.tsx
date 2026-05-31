@@ -1,5 +1,4 @@
 import { ArrowUpRight, BookOpen, PresentationChart } from "@phosphor-icons/react/dist/ssr";
-import { LightGraphic } from "@/components/ui/LightGraphic";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { presentations, publications } from "@/content/publications";
@@ -19,6 +18,7 @@ export default function PublicationsPage() {
         eyebrow="Publications and presentations"
         title="Articles, presentations, and public voice are part of the impact record."
         description="Team members and parents have written in English and Chinese to promote community service participation among Chinese Americans in Atlanta."
+        motif="notes"
       />
 
       <section className="px-4 pb-24">
@@ -61,7 +61,6 @@ export default function PublicationsPage() {
           <Reveal>
             <span className="eyebrow">Meetings and decks</span>
             <h2 className="heading-md mt-6">Presentations preserve how the team shares its work internally and publicly.</h2>
-            <LightGraphic className="mt-8 hidden lg:block" />
           </Reveal>
           <div className="grid gap-4 md:grid-cols-2">
             {presentations.map((deck, index) => (

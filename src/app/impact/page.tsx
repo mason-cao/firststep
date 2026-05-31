@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CurrencyDollar, Medal, Microscope, Quotes, SealCheck, Tree, Trophy } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, CurrencyDollar, Medal, Microscope, SealCheck, Tree, Trophy } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
 import { PageHero } from "@/components/ui/PageHero";
 import { PrimaryLink } from "@/components/ui/PrimaryLink";
@@ -26,10 +26,11 @@ export default function ImpactPage() {
         eyebrow="Impact hub"
         title="Proof that youth-led work can become a public record."
         description="This hub gathers the measurable record: events, fundraising, awards, campaigns, partner causes, and environmental data."
+        motif="sun-step"
       />
 
       <section className="px-4 pb-24">
-        <div className="page-shell grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+        <div className="page-shell grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <Reveal className="noise-card rounded-[2rem] bg-ink p-5 text-shell md:p-8">
             <div className="mb-8 flex items-center gap-3">
               <span className="grid size-11 place-items-center rounded-full bg-harvest text-ink">
@@ -47,23 +48,19 @@ export default function ImpactPage() {
             </div>
           </Reveal>
 
-          <div className="grid gap-5">
-            <Reveal className="rounded-[2rem] bg-harvest p-6 text-ink md:p-8">
-              <Trophy className="size-10" weight="duotone" />
-              <h2 className="mt-8 font-display text-4xl font-bold leading-tight">Constellation Community Champions</h2>
-              <p className="mt-4 text-sm font-bold leading-6 text-ink/72">
-                Congratulations First Step Team on being Constellation Community Champions for the third year in a row. Thank you Constellation for the grant.
-              </p>
-            </Reveal>
-
-            <Reveal className="rounded-[2rem] border border-ink/10 bg-shell p-6 md:p-8">
-              <Quotes className="size-10 text-clay" weight="duotone" />
-              <blockquote className="mt-7 space-y-4 font-display text-2xl font-bold leading-tight md:text-3xl">
-                <p>{"I envision a future where we all think about how to make the world a better place and start by taking small but concrete steps."}</p>
-                <p>{"I have always wanted to clean up trash, save coral reefs, solve hunger and other large scale problems."}</p>
-                <p>{"That's why I founded this team. Let's all take the First Step to a better future."}</p>
-              </blockquote>
-              <p className="mt-5 text-sm font-extrabold text-moss">Annie Lin, founder and president from 2020-2024</p>
+          <div className="grid gap-5 lg:self-start">
+            <Reveal className="rounded-[1.5rem] border border-ink/10 bg-harvest p-5 text-ink shadow-[0_24px_80px_color-mix(in_oklch,var(--color-ink)_10%,transparent)] md:p-6">
+              <div className="grid gap-4 sm:grid-cols-[auto_1fr] sm:items-start">
+                <span className="grid size-12 place-items-center rounded-full bg-ink text-harvest">
+                  <Trophy className="size-7" weight="duotone" />
+                </span>
+                <div>
+                  <h2 className="font-display text-2xl font-semibold leading-tight md:text-3xl">Constellation Community Champions</h2>
+                  <p className="mt-3 text-sm font-bold leading-6 text-ink/72">
+                    First Step Team has been named Constellation Community Champions for the third year in a row. Thank you Constellation for the grant.
+                  </p>
+                </div>
+              </div>
             </Reveal>
           </div>
         </div>

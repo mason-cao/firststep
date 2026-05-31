@@ -4,7 +4,7 @@ import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 type PrimaryLinkProps = {
   href: string;
   children: React.ReactNode;
-  variant?: "solid" | "outline" | "dark";
+  variant?: "solid" | "outline" | "outlineLight" | "dark";
   external?: boolean;
 };
 
@@ -13,6 +13,8 @@ const variants = {
     "bg-harvest text-ink ring-1 ring-harvest hover:bg-clay hover:text-shell",
   outline:
     "bg-transparent text-ink ring-1 ring-ink/20 hover:bg-ink hover:text-shell",
+  outlineLight:
+    "bg-transparent text-shell ring-1 ring-shell/40 hover:bg-shell hover:text-ink",
   dark: "bg-ink text-shell ring-1 ring-ink hover:bg-moss",
 };
 

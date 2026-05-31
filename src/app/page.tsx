@@ -1,64 +1,67 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CalendarBlank, MapTrifold } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, CalendarBlank, Quotes } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { ParallaxPanel } from "@/components/ui/ParallaxPanel";
 import { PrimaryLink } from "@/components/ui/PrimaryLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { activities } from "@/content/activities";
-import { galleryImages } from "@/content/gallery";
 import { evidenceLinks, impactStats, programs } from "@/content/site";
 import { microplastics } from "@/content/microplastics";
+import { mission } from "@/content/stats";
 
 const recentActivities = activities.slice(0, 5);
+const homeHeroImage =
+  "https://upload.wikimedia.org/wikipedia/commons/7/7c/Volunteers_clean_up_Trinity_River_%2852243448006%29.jpg";
 
 export default function Home() {
   return (
     <>
-      <section className="relative min-h-[100dvh] overflow-hidden px-4 pb-16 pt-32 md:pt-36">
-        <div className="page-shell grid min-h-[calc(100dvh-9rem)] gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
-          <div className="hero-enter relative z-10 max-w-5xl">
-            <span className="eyebrow">Youth-led service in Metro Atlanta</span>
+      <section
+        className="relative min-h-[100dvh] overflow-hidden bg-ink px-4 pb-16 pt-32 text-shell md:pt-36"
+        style={{
+          backgroundImage: `linear-gradient(90deg, color-mix(in oklch, var(--color-ink) 94%, transparent) 0%, color-mix(in oklch, var(--color-ink) 82%, transparent) 38%, color-mix(in oklch, var(--color-ink) 46%, transparent) 72%, color-mix(in oklch, var(--color-ink) 26%, transparent) 100%), url("${homeHeroImage}")`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,color-mix(in_oklch,var(--color-harvest)_24%,transparent),transparent_27rem),linear-gradient(180deg,transparent_74%,var(--color-ink)_100%)]" />
+        <div className="page-shell grid min-h-[calc(100dvh-9rem)] gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
+          <div className="relative z-10 min-w-0 max-w-5xl">
+            <span className="eyebrow border-shell/24 text-shell/78">Youth-led service in Metro Atlanta</span>
             <h1 className="display-xl mt-7 max-w-5xl">
               Every first step becomes public impact.
             </h1>
-            <p className="copy-lg mt-7 max-w-xl">
+            <p className="mt-7 max-w-xl text-[1.05rem] leading-[1.58] text-shell/78 md:text-[1.2rem] xl:text-[1.3rem]">
               First Step Team turns cleanups, service, culture, and environmental research into measurable local action.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>a]:w-full [&>a]:justify-center sm:[&>a]:w-auto">
               <PrimaryLink href="/impact">Explore Impact</PrimaryLink>
-              <PrimaryLink href="mailto:firststepteam2020@gmail.com" variant="outline" external>
+              <PrimaryLink href="mailto:firststepteam2020@gmail.com" variant="outlineLight" external>
                 Email First Step
               </PrimaryLink>
             </div>
           </div>
 
-          <ParallaxPanel className="relative z-0">
-            <div className="noise-card rounded-[2rem] border border-ink/10 bg-mist p-2 shadow-[0_40px_120px_color-mix(in_oklch,var(--color-ink)_16%,transparent)]">
-              <div className="relative aspect-[4/4.7] overflow-hidden rounded-[1.55rem] bg-moss">
-                <Image
-                  src={galleryImages[0]}
-                  alt="First Step Team volunteers at a community event"
-                  fill
-                  priority
-                  sizes="(min-width: 1024px) 48vw, 92vw"
-                  className="object-cover opacity-88 mix-blend-luminosity"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/12 to-transparent" />
-                <div className="absolute bottom-5 left-5 right-5 rounded-[1.25rem] border border-shell/16 bg-ink/80 p-5 text-shell">
-                  <div className="flex items-start justify-between gap-5">
-                    <div>
-                      <p className="text-xs font-extrabold uppercase text-harvest">Impact record</p>
-                      <p className="mt-2 max-w-72 text-sm leading-6 text-shell/72">
-                        A living archive of service, fundraising, research, awards, publications, and team leadership.
-                      </p>
-                    </div>
-                    <MapTrifold className="size-8 shrink-0 text-harvest" />
-                  </div>
+          <div className="relative z-10 min-w-0 self-end pb-2 lg:mt-32">
+            <div className="w-full max-w-2xl overflow-hidden rounded-[1.5rem] border border-shell/18 bg-ink/68 p-5 shadow-[0_30px_100px_color-mix(in_oklch,var(--color-ink)_30%,transparent)] backdrop-blur-md md:p-6">
+              <div className="flex items-center gap-2 text-harvest">
+                <Quotes className="size-4" weight="bold" />
+                <p className="text-xs font-extrabold uppercase">Founder note</p>
+              </div>
+              <div className="mt-4 grid gap-5 sm:grid-cols-[1fr_auto] sm:items-end">
+                <div>
+                  <blockquote className="max-w-xl break-words text-wrap font-display text-lg font-semibold leading-snug text-shell md:text-[1.45rem]">
+                    {mission.founderQuote.text}
+                  </blockquote>
+                  <p className="mt-4 text-sm font-extrabold text-harvest">
+                    {mission.founderQuote.author}, {mission.founderQuote.title}
+                  </p>
+                </div>
+                <div className="grid size-16 shrink-0 place-items-center rounded-full border border-shell/24 bg-shell/12 text-sm font-extrabold text-shell md:size-20">
+                  AL
                 </div>
               </div>
             </div>
-          </ParallaxPanel>
+          </div>
         </div>
       </section>
 
@@ -173,8 +176,7 @@ export default function Home() {
         <div className="page-shell">
           <Reveal className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <span className="eyebrow">Recent activity ledger</span>
-              <h2 className="heading-md mt-6 max-w-3xl">The archive should feel useful, not ornamental.</h2>
+              <h2 className="heading-md max-w-3xl">Recent activity</h2>
             </div>
             <PrimaryLink href="/activities" variant="outline">View Activities</PrimaryLink>
           </Reveal>
