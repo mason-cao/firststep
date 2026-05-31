@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Manrope, Newsreader } from "next/font/google";
+import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { PageTransition } from "@/components/ui/PageTransition";
 
-const display = Newsreader({
-  variable: "--font-display",
+const display = Plus_Jakarta_Sans({
+  variable: "--font-sans-display",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["500", "600", "700", "800"],
 });
 
 const body = Manrope({
-  variable: "--font-body",
+  variable: "--font-sans-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
 });

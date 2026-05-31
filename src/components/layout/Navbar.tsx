@@ -15,16 +15,16 @@ export function Navbar() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 md:pt-6">
-        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-full border border-ink/10 bg-paper/86 px-3 py-2 shadow-[0_18px_70px_color-mix(in_oklch,var(--color-ink)_10%,transparent)] backdrop-blur-xl md:px-4">
+        <nav className="mx-auto flex min-w-0 w-full max-w-6xl items-center justify-between rounded-full border border-ink/10 bg-paper/86 px-3 py-2 shadow-[0_18px_70px_color-mix(in_oklch,var(--color-ink)_10%,transparent)] backdrop-blur-xl md:px-4">
           <Link
             href="/"
-            className="focus-ring group flex items-center gap-3 rounded-full pr-3 text-sm font-extrabold"
+            className="focus-ring group flex min-w-0 items-center gap-3 rounded-full pr-3 text-sm font-extrabold"
             onClick={() => setOpen(false)}
           >
-            <span className="grid size-10 place-items-center rounded-full bg-ink text-shell transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[-8deg]">
+            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-shell transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[-8deg]">
               FS
             </span>
-            <span>First Step Team</span>
+            <span className="truncate">First Step Team</span>
           </Link>
 
           <div className="hidden items-center gap-1 lg:flex">
@@ -35,7 +35,7 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`focus-ring rounded-full px-3.5 py-2 text-sm font-bold transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  className={`focus-ring rounded-full px-3.5 py-2 text-sm font-bold transition-colors duration-150 ${
                     active
                       ? "bg-harvest text-ink shadow-[inset_0_0_0_1px_color-mix(in_oklch,var(--color-ink)_12%,transparent)]"
                       : "text-ink/68 hover:bg-ink/7 hover:text-ink"
@@ -48,7 +48,7 @@ export function Navbar() {
           </div>
 
           <button
-            className="focus-ring grid size-11 place-items-center rounded-full bg-ink text-shell transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 lg:hidden"
+            className="focus-ring grid size-11 shrink-0 place-items-center rounded-full bg-ink text-shell transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 lg:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
