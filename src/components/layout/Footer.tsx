@@ -1,36 +1,50 @@
 import Link from "next/link";
 import { EnvelopeSimple, InstagramLogo, MapPin } from "@phosphor-icons/react/dist/ssr";
+import { ButtonLink } from "@/components/ui/Button";
+import { Marquee } from "@/components/ui/Marquee";
 import { contactEmail, instagramUrl, navItems } from "@/content/site";
-import { PrimaryLink } from "@/components/ui/PrimaryLink";
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-shell">
-      <div className="page-shell py-10 md:py-12">
-        <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+    <footer className="border-t-2 border-ink bg-ink text-shell">
+      <Marquee
+        items={["Take the first step", "Join the crew", "Metro Atlanta", "Est. 2020"]}
+        duration={28}
+        className="border-b-2 border-shell/20 bg-signal py-2.5 text-ink"
+        itemClassName="font-display text-xl font-extrabold uppercase md:text-2xl"
+      />
+
+      <div className="page-shell py-14 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr]">
           <div>
-            <span className="eyebrow border-shell/18 text-shell/72">Everything begins with a First Step</span>
-            <h2 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-[1.06] md:text-5xl">
-              Follow the work. Take the next step.
+            <span className="eyebrow text-shell/70">Everything begins with a first step</span>
+            <h2 className="display-lg mt-5 max-w-2xl">
+              Follow the work.
+              <br />
+              <span className="text-signal">Take the next step.</span>
             </h2>
-            <p className="mt-4 max-w-xl text-sm leading-6 text-shell/68">
-              Review the impact record, follow new projects, or email the team to get involved with service across Metro Atlanta.
+            <p className="mt-5 max-w-lg text-[0.95rem] leading-relaxed text-shell/70">
+              Review the impact record, follow new projects, or email the team to get
+              involved with service across Metro Atlanta.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <PrimaryLink href="/impact">Explore Impact</PrimaryLink>
-              <PrimaryLink href={`mailto:${contactEmail}`} variant="outline" external>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <ButtonLink href="/impact">Explore Impact</ButtonLink>
+              <ButtonLink href={`mailto:${contactEmail}`} variant="light" external>
                 Email First Step
-              </PrimaryLink>
+              </ButtonLink>
             </div>
           </div>
 
-          <div className="grid gap-8 border-t border-shell/12 pt-8 sm:grid-cols-2 lg:border-t-0 lg:pt-0">
+          <div className="grid gap-10 sm:grid-cols-2">
             <div>
-              <h3 className="font-display text-xl font-bold">Navigate</h3>
-              <ul className="mt-4 grid gap-2 text-sm">
+              <h3 className="mono-tag text-signal">Navigate</h3>
+              <ul className="mt-5 grid gap-2.5">
                 {navItems.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="animated-underline text-shell/70 hover:text-shell">
+                    <Link
+                      href={item.href}
+                      className="animated-underline text-sm font-bold uppercase tracking-wider text-shell/75 hover:text-shell"
+                    >
                       {item.label}
                     </Link>
                   </li>
@@ -39,18 +53,23 @@ export function Footer() {
             </div>
 
             <div>
-              <h3 className="font-display text-xl font-bold">Contact</h3>
-              <div className="mt-4 grid gap-3 text-sm text-shell/70">
-                <a href={`mailto:${contactEmail}`} className="group flex items-start gap-3 hover:text-shell">
-                  <EnvelopeSimple className="mt-1 size-5 text-harvest" />
-                  <span>{contactEmail}</span>
+              <h3 className="mono-tag text-signal">Contact</h3>
+              <div className="mt-5 grid gap-3.5 text-sm text-shell/75">
+                <a href={`mailto:${contactEmail}`} className="flex items-start gap-3 hover:text-shell">
+                  <EnvelopeSimple className="mt-0.5 size-5 shrink-0 text-volt" weight="bold" />
+                  <span className="break-all">{contactEmail}</span>
                 </a>
-                <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="group flex items-start gap-3 hover:text-shell">
-                  <InstagramLogo className="mt-1 size-5 text-harvest" />
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 hover:text-shell"
+                >
+                  <InstagramLogo className="mt-0.5 size-5 shrink-0 text-volt" weight="bold" />
                   <span>@first.step.team</span>
                 </a>
                 <div className="flex items-start gap-3">
-                  <MapPin className="mt-1 size-5 text-harvest" />
+                  <MapPin className="mt-0.5 size-5 shrink-0 text-volt" weight="bold" />
                   <span>Metro Atlanta, Georgia</span>
                 </div>
               </div>
@@ -58,9 +77,11 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-shell/12 pt-5 text-xs text-shell/46 md:flex-row md:items-center md:justify-between">
-          <span>© {new Date().getFullYear()} First Step Team. Youth-led community impact in Metro Atlanta.</span>
-          <span>Website by Mason Cao.</span>
+        <div className="mt-14 flex flex-col gap-2 border-t-2 border-shell/15 pt-6 md:flex-row md:items-center md:justify-between">
+          <span className="mono-tag text-shell/50">
+            © {new Date().getFullYear()} First Step Team · Youth-led community impact
+          </span>
+          <span className="mono-tag text-shell/50">Website by Mason Cao</span>
         </div>
       </div>
     </footer>

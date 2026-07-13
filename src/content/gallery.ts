@@ -1,26 +1,24 @@
-export const galleryImages = [
-  "/images/service-cleanup.png",
-  "/images/culture-service.png",
-  "/images/research-water.png",
-  "/images/donation-packing.png",
+export interface GalleryPhoto {
+  src: string;
+  caption: string;
+}
+
+// Add real photos to public/photos/ and list them here (see PHOTO_GUIDE.md).
+export const galleryPhotos: GalleryPhoto[] = [
+  { src: "/images/service-cleanup.png", caption: "River cleanup crew" },
+  { src: "/images/culture-service.png", caption: "Culture and service day" },
+  { src: "/images/research-water.png", caption: "Water sampling for microplastics" },
+  { src: "/images/donation-packing.png", caption: "Packing donations" },
 ];
 
-// Preserved from the Screaming Frog/Google Sites crawl for later replacement,
-// but these URLs currently return 403 outside Google Sites.
-export const legacyGalleryImageUrls = [
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SQ14ggwZhDRzods7vqidlaw7S5sKGHeE8hJdaNIfoGv40dv4Agy2Ckr8KhL1ZGve3QfgvooFIs_-CYD5jUFMxukztcMlnN_yzttnNBu1HLZ-ccbYqdlver9VSKsY8l-JSxcy0QblY1v3NdmfhPMjJaig7M43PCUyxf7zay0MSk37Bie7zd_4e3NLPvponUY7Lwakl9xJEOiacq-B51of4lZvlTQxokfKAIE=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SQnj-DENGVPF0HReQHoUReWYHDCJzGC1rg0PX-EmiHOM9-79Z4IHcyylOB_nj2z48Xc7DRKpz0jf7eZ-GPGp-6P75l1_hk6ps1FgwwlkTO1ojLntZs00Bf02tyjW7whPyWRBVAm8zC1vXvRb_2hmIpgEdO-gl1GMyeQvNSbxyxNoWsknlKWMpY4StOVCUHvy4231gTllVuF3Txsvyc26uWXy_-BxWgFI28lvN8=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SRKJiaS9z9oot-dXsyPa2PfpBo5JAo-0UT1o17u_kPBNXLDRHyQuAilfLpMn_cnjV3mHHHiCMYd93p-sO_voAx13ur9tiFsAZ6C5X5crJXfXz8vxL8I01E_2TkADfNe9NXLghK1TQaw6WIhZNfl5HHuPHBsts7lfMAhhn0S84hurq15AiOHTb8bsdwEkQkQ0Z7WgCsKNYrTDafR_hApKqV7hk3TA6zIND3f=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SSVkW9wDxUDI3wbsA6V2CxzsbPzTrp65O-sa1ZTwoVOji2qGfpRd_yZ-lIpcTV6AMVhXjC2a51uGRQPQ-rHBD9DrqVEwltWI_59Rlv4ClSV4C5uj6gR6kyURE63MLEL5wUFb_rlfYS8-xOLHSoYFgeh3wmvJVcE7tOrY4_NmoNjZNvMDM68uoIWA4U=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SSotpc_xI3-SoZhm-jgRugvKwMOY_cLx0V0jAQkg2kMDcckF-TwK3e8JiKN2zcqPYHGJ39OKvpyW0aFY1sMI9RQlnE64fVrlxdy2zGrkGICugHXMa0JEeMHX9VemwtzEupReTKx5h7MRgKf1yuXEx_wyvFJuqKQVIlI_Y2RrpF28kn1UPyyEqCv89d9CMwcPBIx0_xoy4BPRCUJdjyIY0i5XVSRFS1WsUzl=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0ST8pVc2NchtAW7n9t_sjgqX944t58iRqSHQd-rRFM1o8arQT3C5pu4lqM6LjIjuRBKg6TtfvAjifYmUtto9FAmJsS5aNpihCTlpjvjPtw5nOvx1kyy394XTy1miJhnKE-l5hVq_fphedUUd4NBmvh7wHJsV9QGq0xL57ogS7APwOSz2PVVeJcBSkzvY62v2krrK3fYRivhdOQU877vT9mf5kbBYRbVXDPGN_tY=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0STJ3M_BWStEJuSrh2l7ODKHFVfOeZwvJMA8XLhtA4TwJ7CclRUvj8BM3TQ5u9U3sB2xvGVikfLDtpItpPkJjqwbcLNXxHI9Cag3ILQ2Vv8OtUOiZXXn_9h8s0f7fHD1zZvSMA9WSaEXKtAit9XlHFIKTjw0GTNp2jyDpMnrR3188jnlRM6f_jwS2vbuQ2taJZYafOCUqC6dCGu1jS2mmriN8tLQ1J-gax1a=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SQGL2BotSwnV0jYpn3ykLuVjQbJNUxXFXLKCrzW2I9P-WMw16E0qPKP6Tekt3Gqf-TgK41GUtUrQ75Bf1dF5IaalNtZwEg7e-phpNWIOkyIKnKsGQHtTH-BS7p_ydveTtGnJE8Qhajo2SilW-IpHhfeFJ0WpwA1KrybdVBkurbif-2uH4-2WMEzjEQdjy-OAnaXxm9PJ7T0VuMxFVMh2KyeQc_ui0T6JxkBFsU=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SQBlv_seAkKfuTd63MwQYNQH862Wg9iBtN0XqJTUR99b7c0QfCAomhx3oM-cslA4zRE90yR2Ftvb_z0V0xzOyypfbDRg5zif0uH3pVWwQCqYLQqu6diFFdV9AgVPS7HxUkqLB4786ih2cUqVAAZ8bEiStYFf9x9WtYg3xBrkma4TcoRe61f9p8leZCnHFqGyP_hia_B9rBYGwsglHH7Er4D4_mJ0OcGE51IHKE=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SR3iFlA3H1SV0qmlgZhcskaP0w0xMzm-01haRJ9p_NPORM6oS2XcsKWA8ujopYW6Uc5-XYcTiVQMOpKG41bonyHmsxo0BsQsxiDMUepxyvt1yNSCctSq6is1aedBq56rPz4-XEseb47QigYKFXAhuzyiAfdO_dMwFlJmNnFjNi8I_iExQWKDEYmaRsv2isey_k0uqK9_NQxHDhj-2slhjPw1ThSMiF_BIHvAq4=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SRHWuZ3c0XhQnGMbNpq83Ccx-wy4Kjne5MWiLQEyJSNzqoys-aRfUQVVh0iAFdtmrBPkdCtOC-APLDF2LXGCdfXOCWmk0xnwSc0YQ0NPmu8VYjFQO8F1YKWus3uEcVVGeDml0VBQi1UYZbmwRXpzFrhzo4z6hBgQsURGuEGOuAy4m_lRZiQUsgnhW8a0Z67dW4YCTOEo3iO54cHevclE3b1mFITLmvPDCXcaZg=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0STEOYcbur8ZcRsIsS4QoqdLOt7D8y7H2_qeI8TJ3Uwv7vjDvOmucw6z0h5qCwLYrO2j27TpPJQRwPITIPSj5CAUkFTLgKtlPhuw7S1wJlxAqaME7FlkYsOye2aTt-KjRG4KpD8dAfBh_u9iXvhnK2dr3qnSKMjdKbBHswwYbru2Hl2ZKuDcXzVG_oQ=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SR2lMt-aVDHtijxmGodzxeWKgfw0n6Vn41aQnRFNu4Wx4EcIzY6WcF2H37-ul_DiWT7Z2h3Q_OYkY0S8Axlgn7Ete3CNih3MbrszMaY3DBoyTL7atNEQxkyaCg-mO1SMTynJiVCpyyZ9ZQuNahRyqg0eouJ66lTVE031bYHnOeaAoYRc7Gw2b7qbXQ=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0STn74ZKCKZKNtKylqt_QDAfYNNDyj29sFGtKl6mbNYsv8HGCCLCDxraxKP3zR64XZ8hVykxbL09jEv-pKvdijDz0lHDIOErmEC50K2zycpqAFFwwFIKLXFe8eWbPz4-7xthdzTsENKUuuFNjTpisM0OD2WnhIBPtMjK4UgWPAc87-ea-8jpLGu6=w800",
-  "https://lh3.googleusercontent.com/sitesv/APaQ0SQSXP79wCglteSUtraD0M0ZjzW9M2GjXFERgNQ8lF-eN56b26eZ5gA6q9MjFb8RvTZHgBdH_bbJymAXUF9fnhaIgm8QF32z2123_7kelfge-bQQ8oT2GAFnD3Sbzh7aO-1rYCepQz9FnA0EQtjQ4ehlZFBF5Uy5A38FXAzMo_AinbjdSVypEGqlZxLadbaBjIA9QjRyaPE8_yAV_ox3bjEBBAaQ4Bo6L7Sh=w800",
+// Labeled empty slots shown on the gallery page until real photos replace them.
+export const galleryPlaceholders: string[] = [
+  "Shore sweep on Lake Lanier",
+  "CFF Great Strides walk",
+  "Senior home performance",
+  "Food bank shift",
+  "Lemonade stand fundraiser",
+  "MedShare volunteering",
+  "Speech night",
+  "Team celebration",
 ];

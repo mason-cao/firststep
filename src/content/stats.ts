@@ -1,13 +1,3 @@
-export const stats = [
-  { value: "200+", label: "Registered Members" },
-  { value: "300+", label: "Regular Volunteers" },
-  { value: "240+", label: "Events Organized" },
-  { value: "$17,895", label: "Raised for NPOs" },
-  { value: "2,500+", label: "lbs Trash Removed" },
-  { value: "34", label: "Volunteer Awards" },
-  { value: "35+", label: "Publications" },
-];
-
 export const mission = {
   tagline: "Everything begins with a First Step. Do not be afraid to take it.",
   whoWeAre:

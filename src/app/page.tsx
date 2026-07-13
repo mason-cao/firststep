@@ -1,199 +1,257 @@
 import Link from "next/link";
-import { ArrowRight, CalendarBlank, Quotes } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { PrimaryLink } from "@/components/ui/PrimaryLink";
+import { ButtonLink } from "@/components/ui/Button";
+import { Marquee } from "@/components/ui/Marquee";
+import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Sticker } from "@/components/ui/Sticker";
 import { activities } from "@/content/activities";
-import { evidenceLinks, impactStats, programs } from "@/content/site";
 import { microplastics } from "@/content/microplastics";
+import { contactEmail, evidenceLinks, impactStats, programs } from "@/content/site";
 import { mission } from "@/content/stats";
 
 const recentActivities = activities.slice(0, 5);
-const homeHeroImage =
-  "https://upload.wikimedia.org/wikipedia/commons/7/7c/Volunteers_clean_up_Trinity_River_%2852243448006%29.jpg";
+const tickerItems = impactStats.map((stat) => `${stat.value} ${stat.label}`);
+
+const programTiles = ["bg-sky", "bg-volt/45", "bg-signal/12", "bg-shell"];
 
 export default function Home() {
   return (
     <>
-      <section
-        className="relative min-h-[100dvh] overflow-hidden bg-ink px-4 pb-16 pt-32 text-shell md:pt-36"
-        style={{
-          backgroundImage: `linear-gradient(90deg, color-mix(in oklch, var(--color-ink) 94%, transparent) 0%, color-mix(in oklch, var(--color-ink) 82%, transparent) 38%, color-mix(in oklch, var(--color-ink) 46%, transparent) 72%, color-mix(in oklch, var(--color-ink) 26%, transparent) 100%), url("${homeHeroImage}")`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,color-mix(in_oklch,var(--color-harvest)_24%,transparent),transparent_27rem),linear-gradient(180deg,transparent_74%,var(--color-ink)_100%)]" />
-        <div className="page-shell grid min-h-[calc(100dvh-9rem)] gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-start">
-          <div className="relative z-10 min-w-0 max-w-5xl">
-            <span className="eyebrow border-shell/24 text-shell/78">Youth-led service in Metro Atlanta</span>
-            <h1 className="display-xl mt-7 max-w-5xl">
-              Every first step becomes public impact.
-            </h1>
-            <p className="mt-7 max-w-xl text-[1.05rem] leading-[1.58] text-shell/78 md:text-[1.2rem] xl:text-[1.3rem]">
-              First Step Team turns cleanups, service, culture, and environmental research into measurable local action.
-            </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>a]:w-full [&>a]:justify-center sm:[&>a]:w-auto">
-              <PrimaryLink href="/impact">Explore Impact</PrimaryLink>
-              <PrimaryLink href="mailto:firststepteam2020@gmail.com" variant="outlineLight" external>
-                Email First Step
-              </PrimaryLink>
-            </div>
-          </div>
-
-          <div className="relative z-10 min-w-0 self-end pb-2 lg:mt-32">
-            <div className="w-full max-w-2xl overflow-hidden rounded-[1.5rem] border border-shell/18 bg-ink/68 p-5 shadow-[0_30px_100px_color-mix(in_oklch,var(--color-ink)_30%,transparent)] backdrop-blur-md md:p-6">
-              <div className="flex items-center gap-2 text-harvest">
-                <Quotes className="size-4" weight="bold" />
-                <p className="text-xs font-extrabold uppercase">Founder note</p>
+      {/* ---------- hero ---------- */}
+      <section className="relative overflow-hidden px-5 pb-16 pt-28 md:pt-36 lg:pb-24">
+        <div
+          aria-hidden="true"
+          className="halftone absolute -left-16 top-20 hidden size-72 rounded-full opacity-50 lg:block"
+        />
+        <div className="page-shell relative grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
+          <div>
+            <Reveal>
+              <div className="flex flex-wrap items-center gap-3">
+                <Sticker color="volt" rotate={-3}>
+                  Est. 2020
+                </Sticker>
+                <Sticker color="sky" rotate={2}>
+                  Student run
+                </Sticker>
+                <span className="eyebrow">Youth-led nonprofit · Metro Atlanta</span>
               </div>
-              <div className="mt-4 grid gap-5 sm:grid-cols-[1fr_auto] sm:items-end">
-                <div>
-                  <blockquote className="max-w-xl break-words text-wrap font-display text-lg font-semibold leading-snug text-shell md:text-[1.45rem]">
-                    {mission.founderQuote.text}
-                  </blockquote>
-                  <p className="mt-4 text-sm font-extrabold text-harvest">
-                    {mission.founderQuote.author}, {mission.founderQuote.title}
-                  </p>
-                </div>
-                <div className="grid size-16 shrink-0 place-items-center rounded-full border border-shell/24 bg-shell/12 text-sm font-extrabold text-shell md:size-20">
-                  AL
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-ink px-4 py-8 text-shell">
-        <div className="page-shell grid gap-6 lg:grid-cols-[0.9fr_repeat(6,1fr)]">
-          <div className="flex items-center">
-            <h2 className="font-display text-2xl font-extrabold leading-none">
-              Accomplishments by the numbers
-            </h2>
-          </div>
-          {impactStats.map((stat, index) => (
-            <Reveal key={stat.label} delay={index * 0.04} className="border-t border-shell/14 pt-4 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
-              <AnimatedCounter value={stat.value} className="block font-display text-4xl font-extrabold leading-none text-harvest" />
-              <span className="mt-2 block text-xs font-bold leading-tight text-shell/68">{stat.label}</span>
             </Reveal>
-          ))}
+            <h1 className="display-hero mt-6">
+              <Reveal delay={0.05}>Everything</Reveal>
+              <Reveal delay={0.12}>begins with a</Reveal>
+              <Reveal delay={0.19}>
+                <span className="text-signal">first step.</span>
+              </Reveal>
+            </h1>
+            <Reveal delay={0.28}>
+              <p className="copy-lg mt-7 max-w-xl">
+                First Step Team turns cleanups, service, culture, and environmental
+                research into measurable local action, recorded in public and run by
+                students.
+              </p>
+            </Reveal>
+            <Reveal delay={0.36}>
+              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <ButtonLink href="/impact">Explore Impact</ButtonLink>
+                <ButtonLink href={`mailto:${contactEmail}`} variant="paper" external>
+                  Join the Team
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-md lg:max-w-none">
+            <Reveal delay={0.15} rotate={-4}>
+              <PhotoSlot
+                src="/images/service-cleanup.png"
+                alt="First Step Team volunteers at a river cleanup"
+                label="Cleanup crew on the water"
+                rotate={-2}
+                priority
+                sizes="(min-width: 1024px) 34rem, 94vw"
+              />
+            </Reveal>
+            <div className="mt-6 grid grid-cols-2 items-start gap-6">
+              <Reveal delay={0.28} rotate={3}>
+                <PhotoSlot
+                  src="/images/research-water.png"
+                  alt="Water sampling for microplastics research"
+                  label="Sampling the water"
+                  aspect="square"
+                  rotate={2}
+                  sizes="(min-width: 1024px) 16rem, 45vw"
+                />
+              </Reveal>
+              <Reveal delay={0.38} rotate={-3}>
+                <PhotoSlot
+                  label="Your photo here!"
+                  hint="Swap in a team photo from public/photos"
+                  aspect="square"
+                  rotate={-2}
+                  className="lg:translate-y-6"
+                />
+              </Reveal>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="section-pad px-4">
-        <div className="page-shell grid gap-12 lg:grid-cols-[0.72fr_1.28fr]">
+      {/* ---------- signature ticker tape ---------- */}
+      <div className="relative -mx-1 -rotate-1 py-2">
+        <Marquee
+          items={tickerItems}
+          duration={40}
+          className="border-y-2 border-ink bg-signal py-3 text-ink"
+          itemClassName="font-display text-2xl font-extrabold uppercase md:text-4xl"
+        />
+      </div>
+
+      {/* ---------- the record ---------- */}
+      <section className="section-pad border-y-2 border-ink bg-ink px-5 text-shell">
+        <div className="page-shell">
           <Reveal>
-            <span className="eyebrow">What the team does</span>
-            <h2 className="heading-md mt-6">Four kinds of work, one public record.</h2>
-            <p className="copy mt-5 max-w-md">
-              The site is organized around proof: what happened, when it happened, who led it, and why it mattered.
-            </p>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <span className="eyebrow text-shell/70">Accomplishments, on the record</span>
+                <h2 className="display-lg mt-4">
+                  The <span className="text-volt">record</span> so far
+                </h2>
+              </div>
+              <p className="mono-data max-w-xs pb-2 text-shell/60">
+                Counted from 2020 to 2026: events, volunteers, fundraising, and trash
+                pulled out of public places.
+              </p>
+            </div>
           </Reveal>
-          <div className="grid gap-3">
-            {programs.map(({ title, description, label, Icon }, index) => (
+          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-3">
+            {impactStats.map((stat, index) => (
               <Reveal
-                key={title}
+                key={stat.label}
                 delay={index * 0.05}
-                className="group grid gap-4 rounded-[1.4rem] border border-ink/10 bg-shell/64 p-4 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:bg-shell md:grid-cols-[6rem_1fr_auto] md:items-center"
+                className="rounded-xl border-2 border-shell/20 p-5 md:p-7"
               >
-                <div className="flex items-center gap-3">
-                  <span className="text-xs font-extrabold uppercase text-ink/46">0{index + 1}</span>
-                  <span className="grid size-11 place-items-center rounded-full bg-moss text-shell">
-                    <Icon className="size-5" weight="bold" />
-                  </span>
-                </div>
-                <div>
-                  <h3 className="font-display text-2xl font-extrabold">{title}</h3>
-                  <p className="copy mt-1 max-w-3xl text-sm">{description}</p>
-                </div>
-                <span className="w-max rounded-full bg-mist px-3 py-2 text-xs font-extrabold text-moss">{label}</span>
+                <AnimatedCounter
+                  value={stat.value}
+                  className="font-display text-4xl font-extrabold leading-none text-volt md:text-6xl"
+                />
+                <span className="mono-tag mt-3 block text-shell/65">{stat.label}</span>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-mist px-4 py-20 md:py-28">
-        <div className="page-shell grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <Reveal className="noise-card min-h-[25rem] rounded-[2rem] border border-ink/10 bg-shell p-5 md:p-8">
-            <div className="relative h-full min-h-[22rem] overflow-hidden rounded-[1.5rem] bg-paper">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_22%_38%,var(--color-clay)_0_0.55rem,transparent_0.6rem),radial-gradient(circle_at_68%_22%,var(--color-moss)_0_0.8rem,transparent_0.85rem),radial-gradient(circle_at_58%_72%,var(--color-sage)_0_1.1rem,transparent_1.15rem)] opacity-75" />
-              <div className="absolute left-8 top-8 rounded-full bg-ink px-4 py-2 text-xs font-extrabold uppercase text-shell">
-                Public data
-              </div>
-              <svg className="absolute inset-0 h-full w-full" viewBox="0 0 620 420" aria-hidden="true">
-                <path
-                  d="M58 306 C160 220 188 246 250 148 S420 92 520 170"
-                  fill="none"
-                  stroke="currentColor"
-                  className="text-moss/45"
-                  strokeWidth="3"
-                  strokeDasharray="8 12"
-                />
-                <path
-                  d="M80 332 C168 272 224 310 310 240 S430 206 548 256"
-                  fill="none"
-                  stroke="currentColor"
-                  className="text-clay/50"
-                  strokeWidth="3"
-                  strokeDasharray="2 10"
-                />
-              </svg>
-              <div className="absolute bottom-6 left-6 right-6 rounded-[1.25rem] bg-ink p-5 text-shell">
-                <h3 className="font-display text-3xl font-extrabold">{microplastics.title}</h3>
-                <p className="mt-3 text-sm leading-6 text-shell/70">{microplastics.impact}</p>
-              </div>
-            </div>
+      {/* ---------- programs ---------- */}
+      <section className="section-pad px-5">
+        <div className="page-shell">
+          <Reveal>
+            <SectionHeading
+              eyebrow="What the team does"
+              title="Four kinds of work, one public record"
+              lead="Every event lands in the ledger: what happened, when, who led it, and what it added up to."
+            />
           </Reveal>
-
-          <Reveal className="flex flex-col justify-center">
-            <span className="eyebrow">Impact evidence</span>
-            <h2 className="heading-md mt-6">A living ledger of service.</h2>
-            <div className="mt-8 grid gap-4">
-              {evidenceLinks.slice(0, 4).map(({ href, title, description, Icon }) => (
-                <Link key={title} href={href} className="group border-b border-ink/12 pb-4">
-                  <div className="flex items-start gap-4">
-                    <span className="grid size-11 shrink-0 place-items-center rounded-full bg-paper text-moss transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[-8deg]">
-                      <Icon className="size-5" weight="bold" />
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {programs.map(({ title, description, label, Icon }, index) => (
+              <Reveal key={title} delay={index * 0.06} rotate={index % 2 === 0 ? -1 : 1}>
+                <article
+                  className={`h-full rounded-xl border-2 border-ink p-6 shadow-[5px_5px_0_0_var(--color-ink)] md:p-8 ${programTiles[index]}`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="grid size-12 place-items-center rounded-lg border-2 border-ink bg-shell text-ink">
+                      <Icon className="size-6" weight="bold" />
                     </span>
-                    <div>
-                      <h3 className="flex items-center gap-2 font-display text-2xl font-extrabold">
-                        {title}
-                        <ArrowRight className="size-4 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1" />
-                      </h3>
-                      <p className="copy mt-1 text-sm">{description}</p>
-                    </div>
+                    <Sticker color="shell" rotate={index % 2 === 0 ? 2 : -2}>
+                      {label}
+                    </Sticker>
                   </div>
-                </Link>
-              ))}
-            </div>
+                  <h3 className="heading-md mt-6">{title}</h3>
+                  <p className="copy mt-3 max-w-md">{description}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- microplastics / river section ---------- */}
+      <section className="border-y-2 border-ink bg-river px-5 py-20 text-shell md:py-28">
+        <div className="page-shell grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <Reveal>
+              <div className="flex flex-wrap items-center gap-3">
+                <Sticker color="volt" rotate={-3}>
+                  2025 cohort
+                </Sticker>
+                <span className="eyebrow text-shell/80">Research and data</span>
+              </div>
+              <h2 className="display-lg mt-5">
+                The first public microplastics data for Metro Atlanta.
+              </h2>
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-shell/85 md:text-lg">
+                {microplastics.description} Students mapped pollution across natural
+                waters and published the results for anyone to use.
+              </p>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                <ButtonLink href={microplastics.url} variant="paper" external>
+                  Open the Data
+                </ButtonLink>
+                <ButtonLink href="/impact#microplastics" variant="light">
+                  How It Was Made
+                </ButtonLink>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={0.15} rotate={3}>
+            <PhotoSlot
+              src="/images/research-water.png"
+              alt="Students testing water samples in the field"
+              label="Field sampling day at the Chattahoochee watershed"
+              rotate={1.5}
+              sizes="(min-width: 1024px) 32rem, 94vw"
+            />
           </Reveal>
         </div>
       </section>
 
-      <section className="section-pad px-4">
+      {/* ---------- recent activity ledger ---------- */}
+      <section className="section-pad px-5">
         <div className="page-shell">
-          <Reveal className="mb-10 flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <div>
-              <h2 className="heading-md max-w-3xl">Recent activity</h2>
+          <Reveal>
+            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+              <SectionHeading
+                eyebrow="Fresh off the ledger"
+                title="Recent activity"
+                size="md"
+              />
+              <ButtonLink href="/activities" variant="paper">
+                View All 240+ Events
+              </ButtonLink>
             </div>
-            <PrimaryLink href="/activities" variant="outline">View Activities</PrimaryLink>
           </Reveal>
-          <div className="border-y border-ink/14">
+          <div className="mt-10 overflow-hidden rounded-xl border-2 border-ink bg-shell shadow-[5px_5px_0_0_var(--color-ink)]">
             {recentActivities.map((activity, index) => (
               <Reveal key={`${activity.title}-${activity.date}`} delay={index * 0.04}>
                 <Link
                   href="/activities"
-                  className="grid gap-3 border-b border-ink/10 py-5 last:border-b-0 md:grid-cols-[8rem_1.4fr_0.7fr_auto] md:items-center"
+                  className="group grid gap-2 border-b-2 border-ink/10 px-5 py-4 transition-colors last:border-b-0 hover:bg-sky/60 md:grid-cols-[9rem_1fr_auto] md:items-center md:gap-5 md:px-7"
                 >
-                  <span className="flex items-center gap-2 text-sm font-extrabold text-moss">
-                    <CalendarBlank className="size-4" />
-                    {activity.date}
+                  <span className="mono-data text-signal">{activity.date}</span>
+                  <span className="font-display text-xl font-bold leading-tight md:text-2xl">
+                    {activity.title}
                   </span>
-                  <strong className="font-display text-2xl font-extrabold">{activity.title}</strong>
-                  <span className="copy text-sm">{activity.year}</span>
-                  <span className="text-sm font-extrabold">Details</span>
+                  <span className="mono-tag flex items-center gap-2 text-ink/55 group-hover:text-ink">
+                    {activity.year}
+                    <ArrowRight
+                      className="size-4 transition-transform duration-300 group-hover:translate-x-1"
+                      weight="bold"
+                    />
+                  </span>
                 </Link>
               </Reveal>
             ))}
@@ -201,28 +259,67 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="people" className="section-pad border-t border-ink/10 bg-mist px-4 text-ink">
-        <div className="page-shell grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+      {/* ---------- founder quote ---------- */}
+      <section className="border-y-2 border-ink bg-sky px-5 py-20 md:py-28">
+        <div className="page-shell grid gap-12 lg:grid-cols-[0.62fr_1.38fr] lg:items-center">
+          <Reveal rotate={-3} className="mx-auto w-full max-w-72">
+            <PhotoSlot
+              label="Annie, founder"
+              hint="Add a founder photo to public/photos"
+              aspect="portrait"
+              rotate={-2}
+              sizes="18rem"
+            />
+          </Reveal>
+          <div>
+            <Reveal>
+              <span aria-hidden="true" className="font-display text-7xl font-extrabold leading-none text-signal">
+                “
+              </span>
+              <blockquote className="max-w-3xl text-xl font-semibold leading-relaxed text-ink/90 md:text-2xl">
+                {mission.founderQuote.text}
+              </blockquote>
+              <div className="mt-7 flex flex-wrap items-center gap-4">
+                <Sticker color="signal" rotate={-2}>
+                  {mission.founderQuote.author}
+                </Sticker>
+                <span className="mono-tag text-ink/60">{mission.founderQuote.title}</span>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- explore the record ---------- */}
+      <section className="section-pad px-5">
+        <div className="page-shell">
           <Reveal>
-            <span className="eyebrow">People behind the work</span>
-            <h2 className="display-lg mt-6 max-w-3xl">Students organize the record, not just the events.</h2>
-            <p className="copy-lg mt-6 max-w-xl">
-              Leadership is featured first, then alumni and the full member roster are preserved as part of the team archive.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap [&>a]:w-full [&>a]:justify-center sm:[&>a]:w-auto">
-              <PrimaryLink href="/team">Meet the Team</PrimaryLink>
-              <PrimaryLink href="/team#alumni" variant="outline">View Alumni</PrimaryLink>
-            </div>
+            <SectionHeading
+              eyebrow="Where to dig in"
+              title="Explore the whole record"
+              size="md"
+            />
           </Reveal>
-          <Reveal className="grid grid-cols-4 items-end gap-3">
-            {[0, 1, 2, 3].map((item) => (
-              <div
-                key={item}
-                className="rounded-full rounded-b-[1.25rem] border border-shell/12 bg-gradient-to-br from-sage via-moss to-clay"
-                style={{ height: [170, 245, 205, 140][item] }}
-              />
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+            {evidenceLinks.map(({ href, title, description, Icon }, index) => (
+              <Reveal key={title} delay={index * 0.05}>
+                <Link
+                  href={href}
+                  className="group flex h-full flex-col rounded-xl border-2 border-ink bg-shell p-5 shadow-[4px_4px_0_0_var(--color-ink)] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_var(--color-ink)]"
+                >
+                  <span className="grid size-10 place-items-center rounded-lg border-2 border-ink bg-volt text-ink">
+                    <Icon className="size-5" weight="bold" />
+                  </span>
+                  <h3 className="heading-sm mt-5">{title}</h3>
+                  <p className="copy mt-2 flex-1 text-sm">{description}</p>
+                  <span className="mono-tag mt-4 flex items-center gap-1.5 text-signal">
+                    Open
+                    <ArrowRight className="size-3.5 transition-transform duration-300 group-hover:translate-x-1" weight="bold" />
+                  </span>
+                </Link>
+              </Reveal>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
     </>

@@ -1,6 +1,7 @@
-import { ArrowUpRight, BookOpen, PresentationChart } from "@phosphor-icons/react/dist/ssr";
+import { ArrowUpRight, PresentationChart } from "@phosphor-icons/react/dist/ssr";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 import { presentations, publications } from "@/content/publications";
 
 export const metadata = {
@@ -15,66 +16,89 @@ export default function PublicationsPage() {
   return (
     <>
       <PageHero
+        index="05"
         eyebrow="Publications and presentations"
-        title="Articles, presentations, and public voice are part of the impact record."
-        description="Team members and parents have written in English and Chinese to promote community service participation among Chinese Americans in Atlanta."
-        motif="notes"
+        title="The work, written up."
+        description="Team members and parents have published in English and Chinese to promote community service participation among Chinese Americans in Atlanta."
       />
 
-      <section className="px-4 pb-24">
-        <div className="page-shell grid gap-14">
-          {years.map((year) => (
-            <section key={year} className="grid gap-6 lg:grid-cols-[10rem_1fr]">
-              <Reveal>
-                <div className="sticky top-36 inline-flex rounded-full bg-ink px-5 py-3 font-display text-3xl font-extrabold text-shell">
-                  {year}
-                </div>
-              </Reveal>
-              <div className="border-t border-ink/14">
-                {publications
-                  .filter((item) => item.year === year)
-                  .map((publication, index) => (
-                    <Reveal key={`${publication.title}-${index}`} delay={index * 0.02}>
+      <section className="px-5 pb-24 pt-14 md:pt-20">
+        <div className="page-shell grid gap-16">
+          {years.map((year) => {
+            const yearItems = publications.filter((item) => item.year === year);
+            return (
+              <section key={year} className="grid gap-6 lg:grid-cols-[11rem_1fr]">
+                <Reveal className="lg:sticky lg:top-28 lg:self-start">
+                  <span className="font-display text-6xl font-extrabold leading-none text-river md:text-7xl">
+                    {year}
+                  </span>
+                  <span className="mono-tag mt-2 block text-ink/50">
+                    {yearItems.length} pieces
+                  </span>
+                </Reveal>
+                <div className="overflow-hidden rounded-xl border-2 border-ink bg-shell shadow-[5px_5px_0_0_var(--color-ink)]">
+                  {yearItems.map((publication, index) => (
+                    <Reveal key={`${publication.title}-${index}`} delay={Math.min(index * 0.03, 0.2)}>
                       <a
                         href={publication.url ?? "#"}
                         target={publication.url ? "_blank" : undefined}
                         rel={publication.url ? "noopener noreferrer" : undefined}
-                        className="group grid gap-4 border-b border-ink/10 py-5 md:grid-cols-[1fr_11rem_2rem] md:items-center"
+                        className="group grid gap-2 border-b-2 border-ink/10 px-5 py-5 transition-colors last:border-b-0 hover:bg-sky/60 md:grid-cols-[1fr_10rem_2rem] md:items-center md:gap-5 md:px-6"
                       >
                         <div>
-                          <h2 className="font-display text-2xl font-extrabold">{publication.title}</h2>
-                          <p className="copy mt-1 text-sm">{publication.authors}</p>
+                          <h2 className="font-display text-xl font-bold leading-tight md:text-2xl">
+                            {publication.title}
+                          </h2>
+                          <p className="mono-data mt-1.5 text-ink/55">{publication.authors}</p>
                         </div>
-                        <span className="text-sm font-extrabold text-moss">{publication.date ?? year}</span>
-                        <ArrowUpRight className="size-5 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 group-hover:-translate-y-1" />
+                        <span className="mono-data text-signal">
+                          {publication.date ?? year}
+                        </span>
+                        <ArrowUpRight
+                          className="hidden size-5 text-ink/40 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-signal md:block"
+                          weight="bold"
+                        />
                       </a>
                     </Reveal>
                   ))}
-              </div>
-            </section>
-          ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </section>
 
-      <section id="decks" className="relative overflow-hidden border-t border-ink/10 bg-mist px-4 py-24 text-ink">
-        <div className="page-shell grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+      <section id="decks" className="border-t-2 border-ink bg-sky px-5 py-20 md:py-28">
+        <div className="page-shell">
           <Reveal>
-            <span className="eyebrow">Meetings and decks</span>
-            <h2 className="heading-md mt-6">Presentations preserve how the team shares its work internally and publicly.</h2>
+            <SectionHeading
+              eyebrow="Meetings and decks"
+              title="How the team presents its work"
+              size="md"
+            />
           </Reveal>
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
             {presentations.map((deck, index) => (
-              <Reveal key={deck.title} delay={index * 0.04} className="rounded-[1.4rem] border border-ink/10 bg-shell p-5">
-                <PresentationChart className="size-8 text-clay" weight="duotone" />
-                <h3 className="mt-4 font-display text-2xl font-extrabold">{deck.title}</h3>
-                <p className="copy mt-2 text-sm">
-                  {[deck.authors, deck.date].filter(Boolean).join(", ")}
-                </p>
-                {"url" in deck && deck.url && (
-                  <a href={deck.url} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 text-sm font-extrabold">
-                    Open <BookOpen className="size-4" />
-                  </a>
-                )}
+              <Reveal key={deck.title} delay={index * 0.05}>
+                <article className="flex h-full flex-col rounded-xl border-2 border-ink bg-shell p-6 shadow-[4px_4px_0_0_var(--color-ink)]">
+                  <span className="grid size-11 place-items-center rounded-lg border-2 border-ink bg-volt text-ink">
+                    <PresentationChart className="size-5" weight="bold" />
+                  </span>
+                  <h3 className="heading-sm mt-5">{deck.title}</h3>
+                  <p className="mono-data mt-2 text-ink/55">
+                    {[deck.authors, deck.date].filter(Boolean).join(" · ")}
+                  </p>
+                  {"url" in deck && deck.url && (
+                    <a
+                      href={deck.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="animated-underline mt-auto inline-flex w-max items-center gap-2 pt-5 text-sm font-bold uppercase tracking-wider text-river"
+                    >
+                      Open deck <ArrowUpRight className="size-4" weight="bold" />
+                    </a>
+                  )}
+                </article>
               </Reveal>
             ))}
           </div>

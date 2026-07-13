@@ -1,26 +1,46 @@
 # First Step Team Design System
 
 ## Direction
-Civic Impact Studio with Warm Civic Ledger colors. The system combines a polished public-impact report with a tactile environmental ledger.
+"Field Day Poster." The identity comes from the team's real world: hi-vis vests at river
+cleanups, community flyers stapled to poles, taped-up photo walls, and a public ledger of
+service records. Loud like a poster, disciplined like a record book.
 
 ## Color Tokens
-- `paper`: `oklch(0.952 0.018 92.7)`, warm page surface.
-- `shell`: `oklch(0.978 0.015 94.2)`, raised content surface.
-- `mist`: `oklch(0.919 0.026 118.9)`, quiet green section field.
-- `ink`: `oklch(0.242 0.021 164.5)`, primary text and dark bands.
-- `moss`: `oklch(0.408 0.061 161.2)`, primary civic green.
-- `sage`: `oklch(0.726 0.076 124.3)`, environmental mid tone.
-- `clay`: `oklch(0.633 0.124 43.9)`, human warmth accent.
-- `harvest`: `oklch(0.787 0.099 84.9)`, metric and CTA accent.
+- `paper`: `#FAF4E7`: bright warm page field.
+- `shell`: `#FFFDF6`: raised surface (cards, polaroid frames).
+- `ink`: `#12303A`: deep river petrol. Text and dark poster sections. Never pure black.
+- `river`: `#1D6FD1`: vivid civic blue. Water, research, links, big spot fields.
+- `sky`: `#D8EAF7`: pale river tint for quiet section fields.
+- `signal`: `#FF5320`: hi-vis safety orange. CTAs, ticker tape, loud moments.
+- `volt`: `#DCE94B`: safety-vest chartreuse. Small stickers and highlights on light
+  surfaces only; never body text, never paired with dark backgrounds at size.
 
 ## Typography
-Use `Bricolage Grotesque` for display and `Manrope` for body. Headlines should feel generous and confident, with tight leading and strong contrast. Body text should stay readable at 65 to 75 characters.
+- Display: `League Spartan` ExtraBold. Bold geometric, round and friendly, no quirky
+  glyphs. Sentence case, tight leading, slight negative tracking. Headlines stay the
+  loudest element on every page. Ticker tape and stickers remain uppercase.
+- Body: `Archivo` (variable). Sturdy grotesk, 400-700.
+- Ledger: `IBM Plex Mono`: dates, record numbers, eyebrows ("REC. 041: 2025").
+  Everything that reads as "public record" is set in mono.
+- Marker: `Shantell Sans`: handwritten annotations on polaroids and stickers only.
 
-## Layout
-Use varied content formats under the hero: metric strips, service rails, feature modules, ledgers, timelines, editorial rows, and archive tables. Cards are allowed only for repeated records where containment helps scanning.
+## Surfaces and Borders
+Flat spot-color fields, `2px` ink borders, hard offset shadows
+(`0.3rem 0.3rem 0 ink`), small radii (`0.4-1rem`). Stickers and polaroids get slight
+rotations (±1-3°). No glassmorphism, no soft blur shadows, no gradients as decoration.
+
+## Signature
+The impact ticker tape: full-bleed, slightly rotated marquee bands of real impact
+records set in the display font on signal orange (or ink), recurring across pages like crew tape.
+Photos live in taped polaroid frames; empty slots render as dashed "add photo" frames
+pointing at `public/photos/` (see PHOTO_GUIDE.md).
 
 ## Motion
-Motion should be highly expressive but accessible: scroll-linked hero parallax, staggered reveals, metric count-ups, timeline progression, animated data paths, page transitions, gallery motion, and tactile hover states. Respect `prefers-reduced-motion`.
+Marquee tape loops, headline rise-ins on load, scroll reveals with slight rotation
+settle, metric count-ups, sticker wiggle on hover, Lenis smooth scrolling. All motion
+respects `prefers-reduced-motion`.
 
 ## Interaction
-Primary CTA label is `Explore Impact`. Secondary contact path uses `firststepteam2020@gmail.com`. Buttons use pill forms and nested icon treatments. Focus states must be visible.
+Buttons are chunky bordered blocks with offset shadows that press flat on `:active`.
+Primary CTA stays `Explore Impact`; contact path is `firststepteam2020@gmail.com`.
+Focus states are always visible (2px signal outline).

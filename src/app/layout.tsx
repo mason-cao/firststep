@@ -1,20 +1,30 @@
 import type { Metadata } from "next";
-import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
+import { Archivo, IBM_Plex_Mono, League_Spartan, Shantell_Sans } from "next/font/google";
 import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
-import { PageTransition } from "@/components/ui/PageTransition";
+import { SmoothScroll } from "@/components/ui/SmoothScroll";
 
-const display = Plus_Jakarta_Sans({
-  variable: "--font-sans-display",
+const leagueSpartan = League_Spartan({
+  variable: "--font-league-spartan",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
 });
 
-const body = Manrope({
-  variable: "--font-sans-body",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
+
+const shantell = Shantell_Sans({
+  variable: "--font-shantell",
+  subsets: ["latin"],
+  weight: ["500"],
 });
 
 export const metadata: Metadata = {
@@ -42,10 +52,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`} data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className={`${leagueSpartan.variable} ${archivo.variable} ${plexMono.variable} ${shantell.variable}`}
+    >
       <body>
+        <SmoothScroll />
         <Navbar />
-        <PageTransition>{children}</PageTransition>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>

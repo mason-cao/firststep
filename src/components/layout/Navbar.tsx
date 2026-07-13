@@ -3,28 +3,37 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { List, X } from "@phosphor-icons/react";
-import { navItems } from "@/content/site";
+import { contactEmail, instagramUrl, navItems } from "@/content/site";
 
 export function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();
 
+  useEffect(() => {
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 md:pt-6">
-        <nav className="mx-auto flex min-w-0 w-full max-w-6xl items-center justify-between rounded-full border border-ink/10 bg-paper/86 px-3 py-2 shadow-[0_18px_70px_color-mix(in_oklch,var(--color-ink)_10%,transparent)] backdrop-blur-xl md:px-4">
+      <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-ink bg-paper">
+        <nav className="page-shell flex h-16 items-center justify-between gap-4 md:h-[4.5rem]">
           <Link
             href="/"
-            className="focus-ring group flex min-w-0 items-center gap-3 rounded-full pr-3 text-sm font-extrabold"
             onClick={() => setOpen(false)}
+            className="group flex min-w-0 items-center gap-2.5"
           >
-            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-ink text-shell transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-[-8deg]">
+            <span className="grid size-9 shrink-0 place-items-center rounded-md border-2 border-ink bg-signal font-display text-base font-extrabold text-ink shadow-[2px_2px_0_0_var(--color-ink)] transition-transform duration-300 ease-out group-hover:-rotate-6">
               FS
             </span>
-            <span className="truncate">First Step Team</span>
+            <span className="truncate font-display text-lg font-extrabold md:text-xl">
+              First Step Team
+            </span>
           </Link>
 
           <div className="hidden items-center gap-1 lg:flex">
@@ -35,20 +44,26 @@ export function Navbar() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className={`focus-ring rounded-full px-3.5 py-2 text-sm font-bold transition-colors duration-150 ${
+                  className={`rounded-md px-2.5 py-1.5 text-[0.78rem] font-bold uppercase tracking-wider transition-colors duration-150 xl:px-3 ${
                     active
-                      ? "bg-harvest text-ink shadow-[inset_0_0_0_1px_color-mix(in_oklch,var(--color-ink)_12%,transparent)]"
-                      : "text-ink/68 hover:bg-ink/7 hover:text-ink"
+                      ? "border-2 border-ink bg-volt text-ink shadow-[2px_2px_0_0_var(--color-ink)]"
+                      : "text-ink/70 hover:bg-ink/8 hover:text-ink"
                   }`}
                 >
                   {item.label}
                 </Link>
               );
             })}
+            <a
+              href={`mailto:${contactEmail}`}
+              className="ml-2 rounded-md border-2 border-ink bg-ink px-3.5 py-1.5 text-[0.78rem] font-bold uppercase tracking-wider text-shell shadow-[2px_2px_0_0_var(--color-signal)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none"
+            >
+              Join Us
+            </a>
           </div>
 
           <button
-            className="focus-ring grid size-11 shrink-0 place-items-center rounded-full bg-ink text-shell transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] active:scale-95 lg:hidden"
+            className="grid size-10 shrink-0 place-items-center rounded-md border-2 border-ink bg-shell text-ink shadow-[2px_2px_0_0_var(--color-ink)] transition-transform duration-200 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none lg:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
@@ -61,30 +76,46 @@ export function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-30 bg-ink/96 px-5 pb-8 pt-28 text-shell lg:hidden"
-            initial={reduceMotion ? false : { opacity: 0, clipPath: "circle(0% at 88% 6%)" }}
-            animate={{ opacity: 1, clipPath: "circle(140% at 88% 6%)" }}
-            exit={{ opacity: 0, clipPath: "circle(0% at 88% 6%)" }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 flex flex-col overflow-y-auto bg-ink px-5 pb-10 pt-24 text-shell lg:hidden"
+            initial={reduceMotion ? false : { opacity: 0, y: -24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -24 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="page-shell grid gap-3">
+            <nav className="page-shell flex w-full flex-1 flex-col">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.href}
-                  initial={reduceMotion ? false : { opacity: 0, y: 28 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 + index * 0.045, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                  initial={reduceMotion ? false : { opacity: 0, x: -28 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 + index * 0.045, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
-                    className="focus-ring block border-b border-shell/12 py-4 font-display text-4xl font-extrabold"
+                    className="group flex items-baseline gap-4 border-b-2 border-shell/15 py-3.5"
                   >
-                    {item.label}
+                    <span className="mono-tag text-signal">{String(index + 1).padStart(2, "0")}</span>
+                    <span className="font-display text-4xl font-extrabold transition-colors group-hover:text-volt">
+                      {item.label}
+                    </span>
                   </Link>
                 </motion.div>
               ))}
-            </div>
+              <div className="mt-auto flex flex-wrap gap-x-6 gap-y-2 pt-10">
+                <a href={`mailto:${contactEmail}`} className="mono-tag text-shell/70 hover:text-shell">
+                  {contactEmail}
+                </a>
+                <a
+                  href={instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mono-tag text-shell/70 hover:text-shell"
+                >
+                  @first.step.team
+                </a>
+              </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,220 +1,257 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-paper: oklch(0.952 0.018 92.7);
-  --color-shell: oklch(0.978 0.015 94.2);
-  --color-mist: oklch(0.919 0.026 118.9);
-  --color-ink: oklch(0.242 0.021 164.5);
-  --color-moss: oklch(0.408 0.061 161.2);
-  --color-sage: oklch(0.726 0.076 124.3);
-  --color-clay: oklch(0.633 0.124 43.9);
-  --color-harvest: oklch(0.787 0.099 84.9);
-  --color-lichen: oklch(0.839 0.051 124.6);
-  --color-smoke: oklch(0.858 0.018 100);
-  --font-display: var(--font-sans-display), ui-sans-serif, system-ui, sans-serif;
-  --font-body: var(--font-sans-body), ui-sans-serif, system-ui, sans-serif;
-  --ease-heavy: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --color-paper: #faf4e7;
+  --color-shell: #fffdf6;
+  --color-ink: #12303a;
+  --color-river: #1d6fd1;
+  --color-sky: #d8eaf7;
+  --color-signal: #ff5320;
+  --color-volt: #dce94b;
+  --font-display: var(--font-league-spartan), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-ledger: var(--font-plex-mono), ui-monospace, monospace;
+  --font-marker: var(--font-shantell), cursive;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-poster: 0.3rem 0.3rem 0 0 var(--color-ink);
+  --shadow-poster-sm: 0.2rem 0.2rem 0 0 var(--color-ink);
 }
 
-* {
-  box-sizing: border-box;
+@layer base {
+  html {
+    background: var(--color-paper);
+    overflow-x: clip;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-shell);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  background: var(--color-paper);
-  overflow-x: clip;
-}
+@layer components {
+  /* ---------- layout shells ---------- */
 
-body {
-  margin: 0;
-  background:
-    radial-gradient(circle at 8% -10%, color-mix(in oklch, var(--color-sage) 28%, transparent), transparent 34rem),
-    radial-gradient(circle at 86% 12%, color-mix(in oklch, var(--color-clay) 16%, transparent), transparent 28rem),
-    var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-body);
-  text-rendering: optimizeLegibility;
-  overflow-x: clip;
-}
+  .page-shell {
+    width: min(calc(100% - 2.5rem), 1360px);
+    margin-inline: auto;
+  }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.035;
-  background-image:
-    linear-gradient(115deg, color-mix(in oklch, var(--color-ink) 24%, transparent) 0 1px, transparent 1px),
-    linear-gradient(0deg, color-mix(in oklch, var(--color-ink) 18%, transparent) 0 1px, transparent 1px);
-  background-size: 38px 38px, 19px 19px;
-  mix-blend-mode: multiply;
-}
+  .page-shell > * {
+    min-width: 0;
+  }
 
-::selection {
-  background: var(--color-harvest);
-  color: var(--color-ink);
-}
+  .section-pad {
+    padding-block: clamp(4.5rem, 8vw, 8.5rem);
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  /* ---------- type system ---------- */
 
-img,
-svg,
-video,
-canvas {
-  max-width: 100%;
-}
+  .display-hero {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.9rem, 7.5vw, 6rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
-}
-
-.page-shell {
-  width: min(calc(100% - 2rem), 1480px);
-  max-width: calc(100% - 2rem);
-  margin-inline: auto;
-}
-
-.page-shell > * {
-  min-width: 0;
-}
-
-.section-pad {
-  padding-block: clamp(5rem, 9vw, 10rem);
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border: 1px solid color-mix(in oklch, var(--color-ink) 16%, transparent);
-  border-radius: 999px;
-  padding: 0.45rem 0.7rem;
-  color: color-mix(in oklch, var(--color-ink) 72%, transparent);
-  font-size: 0.69rem;
-  font-weight: 800;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.display-xl {
-  font-family: var(--font-display);
-  font-size: 2.8rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 0.98;
-  overflow-wrap: anywhere;
-  text-wrap: balance;
-}
-
-.display-lg {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1.02;
-  overflow-wrap: anywhere;
-  text-wrap: balance;
-}
-
-.heading-md {
-  font-family: var(--font-display);
-  font-size: 1.86rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  line-height: 1.08;
-  text-wrap: balance;
-}
-
-.copy-lg {
-  font-size: 1.05rem;
-  line-height: 1.58;
-  color: color-mix(in oklch, var(--color-ink) 74%, transparent);
-}
-
-.copy {
-  line-height: 1.66;
-  color: color-mix(in oklch, var(--color-ink) 70%, transparent);
-}
-
-.noise-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.noise-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: radial-gradient(color-mix(in oklch, var(--color-ink) 40%, transparent) 0.7px, transparent 0.7px);
-  background-size: 8px 8px;
-}
-
-.focus-ring {
-  outline: 2px solid transparent;
-  outline-offset: 4px;
-}
-
-.focus-ring:focus-visible {
-  outline-color: var(--color-clay);
-}
-
-.animated-underline {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 0 1px;
-  transition: background-size 600ms var(--ease-expo);
-}
-
-.animated-underline:hover,
-.animated-underline:focus-visible {
-  background-size: 100% 1px;
-}
-
-@media (min-width: 48rem) {
   .display-xl {
-    font-size: 5.2rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(2.3rem, 5.5vw, 4.6rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
   }
 
   .display-lg {
-    font-size: 3.72rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.9rem, 4vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
   }
 
   .heading-md {
-    font-size: 2.6rem;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(1.45rem, 2.6vw, 2.1rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+  }
+
+  .heading-sm {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+  }
+
+  .mono-tag {
+    font-family: var(--font-ledger);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .mono-data {
+    font-family: var(--font-ledger);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .marker-note {
+    font-family: var(--font-marker);
+    font-weight: 500;
   }
 
   .copy-lg {
-    font-size: 1.2rem;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    line-height: 1.55;
+    color: color-mix(in oklab, var(--color-ink) 82%, transparent);
+  }
+
+  .copy {
+    line-height: 1.62;
+    color: color-mix(in oklab, var(--color-ink) 76%, transparent);
+  }
+
+  /* ---------- poster surfaces ---------- */
+
+  .poster-border {
+    border: 2px solid var(--color-ink);
+  }
+
+  .poster-card {
+    border: 2px solid var(--color-ink);
+    border-radius: 0.75rem;
+    background: var(--color-shell);
+    box-shadow: var(--shadow-poster);
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-ledger);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 1.6rem;
+    height: 0.55rem;
+    flex-shrink: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--color-signal) 0 4px,
+      transparent 4px 8px
+    );
+  }
+
+  /* hazard-tape seam between sections */
+  .tape-seam {
+    height: 0.85rem;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--color-ink) 0 14px,
+      var(--color-signal) 14px 28px
+    );
+    border-block: 2px solid var(--color-ink);
+  }
+
+  /* halftone dot texture corner accents */
+  .halftone {
+    background-image: radial-gradient(
+      color-mix(in oklab, var(--color-ink) 30%, transparent) 1.1px,
+      transparent 1.1px
+    );
+    background-size: 11px 11px;
+  }
+
+  /* ---------- marquee ticker ---------- */
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    min-width: 100%;
+    align-items: center;
+    animation: marquee-scroll var(--marquee-duration, 36s) linear infinite;
+  }
+
+  /* ---------- links ---------- */
+
+  .animated-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 2px;
+    transition: background-size 450ms var(--ease-out-expo);
+  }
+
+  .animated-underline:hover,
+  .animated-underline:focus-visible {
+    background-size: 100% 2px;
   }
 }
 
-@media (min-width: 80rem) {
-  .display-xl {
-    font-size: 6.82rem;
-  }
-
-  .display-lg {
-    font-size: 4.82rem;
-  }
-
-  .heading-md {
-    font-size: 3rem;
-  }
-
-  .copy-lg {
-    font-size: 1.3rem;
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-100%);
   }
 }
+
+/* ---------- reduced motion (unlayered so it wins everywhere) ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -226,4 +263,7 @@ a {
     transition-duration: 0.01ms !important;
   }
 
+  .marquee-track {
+    animation: none;
+  }
 }
