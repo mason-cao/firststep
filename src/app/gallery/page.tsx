@@ -5,15 +5,15 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ArrowLeft, ArrowRight, X } from "@phosphor-icons/react";
 import { PageHero } from "@/components/ui/PageHero";
-import { PhotoSlot } from "@/components/ui/PhotoSlot";
 import { Reveal } from "@/components/ui/Reveal";
-import { galleryPhotos, galleryPlaceholders } from "@/content/gallery";
+import { galleryPhotos } from "@/content/gallery";
 
 const rotations = [-2, 1.5, -1, 2, -1.5, 1, -2.5, 2];
 
 export default function GalleryPage() {
   const [active, setActive] = useState<number | null>(null);
   const reduceMotion = useReducedMotion();
+  const activePhoto = active === null ? null : galleryPhotos[active];
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
@@ -33,7 +33,7 @@ export default function GalleryPage() {
         index="04"
         eyebrow="Photo gallery"
         title="The photo wall."
-        description="Service days, performances, cleanups, and team life, taped up as the visual record. Empty frames are waiting for your uploads."
+        description="Cleanups, research, service, performances, fundraisers, and team life, taped up as the visual record."
       />
 
       <section className="px-5 pb-24 pt-14 md:pt-20">
@@ -60,10 +60,13 @@ export default function GalleryPage() {
                   <div className="relative aspect-[4/3] overflow-hidden rounded-md">
                     <Image
                       src={photo.src}
-                      alt={photo.caption}
+                      alt={photo.alt}
                       fill
                       sizes="(min-width: 1024px) 30rem, (min-width: 640px) 45vw, 94vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                      className={`${
+                        photo.fit === "contain" ? "bg-paper object-contain" : "object-cover"
+                      } transition-transform duration-700 ease-out group-hover:scale-[1.04]`}
+                      style={{ objectPosition: photo.objectPosition ?? "center" }}
                     />
                   </div>
                   <figcaption className="marker-note px-1 pt-2 text-sm text-ink/75">
@@ -74,24 +77,11 @@ export default function GalleryPage() {
             </Reveal>
           ))}
 
-          {galleryPlaceholders.map((label, index) => (
-            <Reveal
-              key={label}
-              delay={((index + galleryPhotos.length) % 6) * 0.05}
-              rotate={rotations[(index + 3) % rotations.length] * 2}
-            >
-              <PhotoSlot
-                label={label}
-                hint="Add this photo to public/photos and list it in gallery.ts"
-                rotate={rotations[(index + 3) % rotations.length]}
-              />
-            </Reveal>
-          ))}
         </div>
       </section>
 
       <AnimatePresence>
-        {active !== null && (
+        {activePhoto && active !== null && (
           <motion.div
             className="fixed inset-0 z-[60] grid place-items-center bg-ink/95 p-4 text-shell"
             initial={reduceMotion ? false : { opacity: 0 }}
@@ -133,8 +123,8 @@ export default function GalleryPage() {
             >
               <div className="relative h-[74dvh]">
                 <Image
-                  src={galleryPhotos[active].src}
-                  alt={galleryPhotos[active].caption}
+                  src={activePhoto.src}
+                  alt={activePhoto.alt}
                   fill
                   sizes="100vw"
                   className="object-contain"
@@ -142,7 +132,7 @@ export default function GalleryPage() {
                 />
               </div>
               <figcaption className="marker-note mt-4 text-center text-lg text-shell/85">
-                {galleryPhotos[active].caption}
+                {activePhoto.caption}
               </figcaption>
             </motion.figure>
           </motion.div>

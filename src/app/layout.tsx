@@ -41,7 +41,14 @@ export const metadata: Metadata = {
       "Youth-led service, environmental action, culture, and public impact in Metro Atlanta.",
     url: "https://www.firststepteam.org",
     siteName: "First Step Team",
-    images: ["/images/service-cleanup.png"],
+    images: [
+      {
+        url: "/photos/paddle_cleanup.png",
+        width: 1280,
+        height: 719,
+        alt: "First Step volunteer collecting trash from the river by kayak",
+      },
+    ],
     type: "website",
   },
 };

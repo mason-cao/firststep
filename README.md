@@ -28,5 +28,6 @@ marquees, and taped polaroid photo frames. See `DESIGN.md` for tokens and rules.
 
 All site copy and records live as typed data in `src/content/`. Dashed "photo slot"
 frames across the site are placeholders: add real photos to `public/photos/` and
-wire them up per `PHOTO_GUIDE.md`. The four images in `public/images` are generated
-stand-ins awaiting real team photos.
+wire them up per `PHOTO_GUIDE.md`. Approved photos in `public/photos/` supply the
+home page, Impact page, gallery, leadership cards, official navbar mark, and social
+sharing preview. Temporary generated image files in `public/images/` are not used.

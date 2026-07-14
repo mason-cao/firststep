@@ -1,3 +1,5 @@
+import Image from "next/image";
+import { Camera } from "@phosphor-icons/react/dist/ssr";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,16 +12,6 @@ export const metadata = {
   title: "Team",
   description: "Meet First Step Team leadership, alumni, and the full member roster.",
 };
-
-function initials(name: string) {
-  return name
-    .split(" ")
-    .map((part) => part[0])
-    .filter(Boolean)
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
-}
 
 function groupByYear<T extends { classYear?: number; graduationYear?: number | null }>(
   rows: T[],
@@ -62,12 +54,41 @@ export default function TeamPage() {
               <Reveal key={`${leader.name}-${leader.role}`} delay={index * 0.04}>
                 <article className="h-full rounded-xl border-2 border-ink bg-shell p-6 shadow-[5px_5px_0_0_var(--color-ink)] md:p-7">
                   <div className="flex items-start gap-5">
-                    <span
-                      className="grid size-16 shrink-0 place-items-center rounded-full border-2 border-dashed border-ink/40 bg-paper font-display text-xl font-bold text-ink/70"
-                      title="Add a headshot to public/photos"
+                    <div
+                      className={`grid shrink-0 gap-2 ${
+                        leader.photos && leader.photos.length > 1 ? "grid-cols-2" : "grid-cols-1"
+                      }`}
                     >
-                      {initials(leader.name)}
-                    </span>
+                      {leader.photos?.length ? (
+                        leader.photos.map((photo) => (
+                          <div
+                            key={photo.src}
+                            className="relative h-20 w-16 overflow-hidden rounded-lg border-2 border-ink bg-paper sm:h-24 sm:w-20"
+                          >
+                            <Image
+                              src={photo.src}
+                              alt={photo.alt}
+                              fill
+                              sizes="(min-width: 640px) 5rem, 4rem"
+                              className="object-cover"
+                              style={{ objectPosition: photo.objectPosition ?? "50% 35%" }}
+                            />
+                          </div>
+                        ))
+                      ) : (
+                        <div
+                          className="grid h-20 w-16 place-items-center overflow-hidden rounded-lg border-2 border-dashed border-ink/40 bg-paper sm:h-24 sm:w-20"
+                          title="Upload to public/photos, then add the photo in src/content/leadership.ts"
+                          role="img"
+                          aria-label={`Photo placeholder for ${leader.name}`}
+                        >
+                          <span className="grid justify-items-center gap-1 text-ink/50" aria-hidden="true">
+                            <Camera className="size-6" weight="bold" />
+                            <span className="mono-tag text-[0.55rem]">Photo</span>
+                          </span>
+                        </div>
+                      )}
+                    </div>
                     <div className="min-w-0">
                       <h3 className="heading-md">{leader.name}</h3>
                       <p className="mono-tag mt-2 text-signal">{leader.role}</p>

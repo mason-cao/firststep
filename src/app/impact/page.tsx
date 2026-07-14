@@ -81,8 +81,9 @@ export default function ImpactPage() {
             </Reveal>
             <Reveal delay={0.18} rotate={-2}>
               <PhotoSlot
-                label="Grant celebration"
-                hint="Add an awards or grant photo to public/photos"
+                src="/photos/shine_a_light_ceremony.png"
+                alt="First Step volunteers holding certificates at the Shine A Light ceremony"
+                label="Volunteer recognition ceremony"
                 rotate={-1.5}
                 sizes="(min-width: 1024px) 28rem, 94vw"
               />
@@ -123,9 +124,9 @@ export default function ImpactPage() {
           </div>
           <Reveal delay={0.15} rotate={2}>
             <PhotoSlot
-              src="/images/research-water.png"
-              alt="Students collecting water samples for microplastics testing"
-              label="Collecting samples in natural waters"
+              src="/photos/microplastics_research.jpg"
+              alt="Students processing water samples in a laboratory"
+              label="Processing water samples in the lab"
               rotate={1.5}
               sizes="(min-width: 1024px) 30rem, 94vw"
             />

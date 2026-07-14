@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
@@ -28,8 +29,15 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="group flex min-w-0 items-center gap-2.5"
           >
-            <span className="grid size-9 shrink-0 place-items-center rounded-md border-2 border-ink bg-signal font-display text-base font-extrabold text-ink shadow-[2px_2px_0_0_var(--color-ink)] transition-transform duration-300 ease-out group-hover:-rotate-6">
-              FS
+            <span className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-md border-2 border-ink bg-shell shadow-[2px_2px_0_0_var(--color-ink)] transition-transform duration-300 ease-out group-hover:-rotate-6">
+              <Image
+                src="/photos/firststep_logo.png"
+                alt=""
+                fill
+                sizes="2.5rem"
+                className="scale-[1.18] object-contain"
+                priority
+              />
             </span>
             <span className="truncate font-display text-lg font-extrabold md:text-xl">
               First Step Team

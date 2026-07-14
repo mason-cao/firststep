@@ -66,8 +66,8 @@ export default function Home() {
           <div className="relative mx-auto w-full max-w-md lg:max-w-none">
             <Reveal delay={0.15} rotate={-4}>
               <PhotoSlot
-                src="/images/service-cleanup.png"
-                alt="First Step Team volunteers at a river cleanup"
+                src="/photos/paddle_cleanup.png"
+                alt="First Step volunteer collecting trash from the river by kayak"
                 label="Cleanup crew on the water"
                 rotate={-2}
                 priority
@@ -77,9 +77,9 @@ export default function Home() {
             <div className="mt-6 grid grid-cols-2 items-start gap-6">
               <Reveal delay={0.28} rotate={3}>
                 <PhotoSlot
-                  src="/images/research-water.png"
-                  alt="Water sampling for microplastics research"
-                  label="Sampling the water"
+                  src="/photos/microplasitscs_poster_presentation.jpg"
+                  alt="Students presenting First Step microplastics research posters"
+                  label="Sharing the microplastics research"
                   aspect="square"
                   rotate={2}
                   sizes="(min-width: 1024px) 16rem, 45vw"
@@ -87,8 +87,9 @@ export default function Home() {
               </Reveal>
               <Reveal delay={0.38} rotate={-3}>
                 <PhotoSlot
-                  label="Your photo here!"
-                  hint="Swap in a team photo from public/photos"
+                  src="/photos/team_bonding_rafting.jpg"
+                  alt="First Step members rafting together during a team trip"
+                  label="Team bonding on the river"
                   aspect="square"
                   rotate={-2}
                   className="lg:translate-y-6"
@@ -209,8 +210,8 @@ export default function Home() {
           </div>
           <Reveal delay={0.15} rotate={3}>
             <PhotoSlot
-              src="/images/research-water.png"
-              alt="Students testing water samples in the field"
+              src="/photos/microplastics_sampling_picture.jpg"
+              alt="Students preparing water sampling bottles beside the Chattahoochee watershed"
               label="Field sampling day at the Chattahoochee watershed"
               rotate={1.5}
               sizes="(min-width: 1024px) 32rem, 94vw"
@@ -264,8 +265,9 @@ export default function Home() {
         <div className="page-shell grid gap-12 lg:grid-cols-[0.62fr_1.38fr] lg:items-center">
           <Reveal rotate={-3} className="mx-auto w-full max-w-72">
             <PhotoSlot
+              src="/photos/founder_picture.jpg"
+              alt="Annie Lin, founder of First Step Team"
               label="Annie, founder"
-              hint="Add a founder photo to public/photos"
               aspect="portrait"
               rotate={-2}
               sizes="18rem"
