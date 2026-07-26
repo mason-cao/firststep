@@ -21,7 +21,7 @@ const aspects = {
 
 /**
  * A taped polaroid frame. With `src` it renders the photo; without it, a
- * dashed "add photo" slot pointing at public/photos/ (see PHOTO_GUIDE.md).
+ * dashed "add photo" slot pointing at public/photos/.
  */
 export function PhotoSlot({
   src,

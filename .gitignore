@@ -10,3 +10,9 @@ yarn-error.log*
 .superpowers/
 data/*.db
 data/*.db-*
+
+# Local project notes and private operational references
+/DESIGN.md
+/PHOTO_GUIDE.md
+/PHOTO_PLACEMENT_NOTES.md
+/PRODUCT.md

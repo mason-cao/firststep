@@ -56,12 +56,13 @@ starts Next.js, and checks `/api/health` before Railway sends traffic to it.
 
 The "Field Day Poster" system: hi-vis orange, river blue, and deep petrol ink on
 warm paper, with condensed poster type, ledger-style mono records, ticker-tape
-marquees, and taped polaroid photo frames. See `DESIGN.md` for tokens and rules.
+marquees, and taped polaroid photo frames.
 
 ## Content and photos
 
 All site copy and records live as typed data in `src/content/`. Dashed "photo slot"
 frames across the site are placeholders: add real photos to `public/photos/` and
-wire them up per `PHOTO_GUIDE.md`. Approved photos in `public/photos/` supply the
-home page, Impact page, gallery, leadership cards, official navbar mark, and social
-sharing preview. Temporary generated image files in `public/images/` are not used.
+connect them to the relevant content records. Approved photos in `public/photos/`
+supply the home page, Impact page, gallery, leadership cards, official navbar mark,
+and social sharing preview. Temporary generated image files in `public/images/` are
+not used.
