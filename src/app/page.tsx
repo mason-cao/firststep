@@ -9,7 +9,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Sticker } from "@/components/ui/Sticker";
 import { activities } from "@/content/activities";
 import { microplastics } from "@/content/microplastics";
-import { contactEmail, evidenceLinks, impactStats, programs } from "@/content/site";
+import { evidenceLinks, impactStats, programs } from "@/content/site";
 import { mission } from "@/content/stats";
 
 const recentActivities = activities.slice(0, 5);
@@ -56,7 +56,7 @@ export default function Home() {
             <Reveal delay={0.36}>
               <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
                 <ButtonLink href="/impact">Explore Impact</ButtonLink>
-                <ButtonLink href={`mailto:${contactEmail}`} variant="paper" external>
+                <ButtonLink href="/join" variant="paper">
                   Join the Team
                 </ButtonLink>
               </div>

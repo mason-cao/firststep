@@ -5,6 +5,7 @@ import {
   Handshake,
   Microscope,
 } from "@phosphor-icons/react/dist/ssr";
+import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -27,13 +28,8 @@ function ResourceRow({
   description?: string;
   Icon: typeof FileText;
 }) {
-  return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group flex items-center justify-between gap-5 rounded-xl border-2 border-ink bg-shell p-5 shadow-[4px_4px_0_0_var(--color-ink)] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_var(--color-ink)]"
-    >
+  const content = (
+    <>
       <span className="flex min-w-0 items-start gap-4">
         <span className="grid size-11 shrink-0 place-items-center rounded-lg border-2 border-ink bg-sky text-ink">
           <Icon className="size-5" weight="bold" />
@@ -47,8 +43,15 @@ function ResourceRow({
         className="size-5 shrink-0 text-signal transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
         weight="bold"
       />
-    </a>
+    </>
   );
+  const className = "group flex items-center justify-between gap-5 rounded-xl border-2 border-ink bg-shell p-5 shadow-[4px_4px_0_0_var(--color-ink)] transition-all duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_0_var(--color-ink)]";
+
+  if (url.startsWith("/")) {
+    return <Link href={url} className={className}>{content}</Link>;
+  }
+
+  return <a href={url} target="_blank" rel="noopener noreferrer" className={className}>{content}</a>;
 }
 
 export default function ResourcesPage() {

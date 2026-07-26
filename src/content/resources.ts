@@ -7,16 +7,16 @@ export interface Resource {
 
 export const resources: Resource[] = [
   {
-    title: "Activity Report Template",
-    url: "https://docs.google.com/document/d/e/2PACX-1vSusGTW0j1Sux4sO55Rjgr9TRA-0IhaFGtLURJjn6Q_9wN5W06vXXgKamYQuWAD5eN1cn-QPLdEjDLk/pub",
+    title: "Report Activity & Hours",
+    url: "/report-hours",
     category: "document",
-    description: "Members use this template to report service activities.",
+    description: "Members submit activities, individual service time, and evidence for leadership approval.",
   },
   {
-    title: "Documenting Community Service Hours",
-    url: "https://docs.google.com/document/d/e/2PACX-1vSVUN5U6BwZTfI6EYEc5FhvM_5AA-gZ6rhxjL3bH8Th7u6XrLJIJHthXPOydeppw_LChfLnCw5XAU2c/pub",
+    title: "Join First Step",
+    url: "/join",
     category: "document",
-    description: "Guidance for tracking and documenting community service hours.",
+    description: "Apply to join the team without leaving the First Step website.",
   },
   {
     title: "Information for Parents",

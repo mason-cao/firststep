@@ -18,7 +18,7 @@ export default function ContactPage() {
         index="07"
         eyebrow="Contact"
         title="Say hello. Take the first step."
-        description="Families, students, and community partners can reach the team by email. Instagram carries the public updates."
+        description="Apply to join online, email the team about a partnership, or follow the public work on Instagram."
       />
 
       <section className="section-pad px-5">
@@ -33,16 +33,18 @@ export default function ContactPage() {
                 We reply!
               </Sticker>
               <h2 className="display-lg mt-6 max-w-2xl">
-                Email is the main <span className="text-signal">join</span> and contact
-                path.
+                Ready to <span className="text-signal">join?</span> Start right here.
               </h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-shell/80">
-                Include your name, student grade if relevant, and what kind of service
-                or collaboration you are interested in.
+                The member application sends your contact information directly to leadership.
+                For partnerships and general questions, email still works best.
               </p>
-              <div className="mt-9">
-                <ButtonLink href={`mailto:${contactEmail}`} external>
-                  Email First Step
+              <div className="mt-9 flex flex-wrap gap-4">
+                <ButtonLink href="/join">
+                  Join First Step
+                </ButtonLink>
+                <ButtonLink href={`mailto:${contactEmail}`} variant="light" external>
+                  Email the Team
                 </ButtonLink>
               </div>
             </div>

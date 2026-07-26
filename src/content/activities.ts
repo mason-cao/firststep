@@ -6,7 +6,7 @@ export interface Activity {
 }
 
 export const reportTemplateUrl =
-  "https://docs.google.com/document/d/e/2PACX-1vSusGTW0j1Sux4sO55Rjgr9TRA-0IhaFGtLURJjn6Q_9wN5W06vXXgKamYQuWAD5eN1cn-QPLdEjDLk/pub";
+  "/report-hours";
 
 export const featuredActivities: Activity[] = [
   {

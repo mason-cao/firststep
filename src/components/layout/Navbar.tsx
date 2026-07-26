@@ -62,12 +62,12 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <a
-              href={`mailto:${contactEmail}`}
+            <Link
+              href="/join"
               className="ml-2 rounded-md border-2 border-ink bg-ink px-3.5 py-1.5 text-[0.78rem] font-bold uppercase tracking-wider text-shell shadow-[2px_2px_0_0_var(--color-signal)] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:shadow-none"
             >
               Join Us
-            </a>
+            </Link>
           </div>
 
           <button
@@ -110,6 +110,13 @@ export function Navbar() {
                   </Link>
                 </motion.div>
               ))}
+              <Link
+                href="/join"
+                onClick={() => setOpen(false)}
+                className="mt-7 inline-flex w-max rounded-lg border-2 border-shell bg-signal px-5 py-3 text-sm font-bold uppercase tracking-wider text-ink shadow-[4px_4px_0_0_var(--color-shell)]"
+              >
+                Join First Step
+              </Link>
               <div className="mt-auto flex flex-wrap gap-x-6 gap-y-2 pt-10">
                 <a href={`mailto:${contactEmail}`} className="mono-tag text-shell/70 hover:text-shell">
                   {contactEmail}

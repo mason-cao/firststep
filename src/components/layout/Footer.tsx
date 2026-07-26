@@ -29,8 +29,8 @@ export function Footer() {
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <ButtonLink href="/impact">Explore Impact</ButtonLink>
-              <ButtonLink href={`mailto:${contactEmail}`} variant="light" external>
-                Email First Step
+              <ButtonLink href="/join" variant="light">
+                Join First Step
               </ButtonLink>
             </div>
           </div>
@@ -72,6 +72,9 @@ export function Footer() {
                   <MapPin className="mt-0.5 size-5 shrink-0 text-volt" weight="bold" />
                   <span>Metro Atlanta, Georgia</span>
                 </div>
+                <Link href="/leadership/login" className="mono-tag pt-2 text-shell/50 hover:text-shell">
+                  Leadership sign in
+                </Link>
               </div>
             </div>
           </div>

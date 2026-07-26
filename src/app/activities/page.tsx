@@ -56,12 +56,12 @@ export default function ActivitiesPage() {
               <span className="eyebrow text-shell/70">Member reporting</span>
               <h2 className="heading-md mt-5">Ran something? Report it.</h2>
               <p className="mt-4 text-sm leading-relaxed text-shell/75">
-                New member activity reports are added to the ledger after review. That
-                is how the record stays complete.
+                Submit the activity, your individual service time, and evidence in one
+                place. Leadership approves every report before it joins the record.
               </p>
               <div className="mt-7">
-                <ButtonLink href={reportTemplateUrl} external>
-                  Open Report Template
+                <ButtonLink href={reportTemplateUrl}>
+                  Submit Activity & Hours
                 </ButtonLink>
               </div>
             </div>
