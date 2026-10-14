@@ -1,9 +1,16 @@
 import type { NextConfig } from "next";
+import { redirectHosts, siteUrl } from "./src/lib/domain";
 
 const nextConfig: NextConfig = {
   devIndicators: false,
   async redirects() {
     return [
+      ...redirectHosts.map((host) => ({
+        source: "/:path*",
+        has: [{ type: "host" as const, value: host }],
+        destination: `${siteUrl}/:path*`,
+        permanent: true,
+      })),
       { source: "/home", destination: "/", permanent: true },
       { source: "/home.html", destination: "/", permanent: true },
       { source: "/index.html", destination: "/", permanent: true },

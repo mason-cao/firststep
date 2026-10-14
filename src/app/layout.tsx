@@ -4,6 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { SmoothScroll } from "@/components/ui/SmoothScroll";
+import { siteUrl } from "@/lib/domain";
 
 const leagueSpartan = League_Spartan({
   variable: "--font-league-spartan",
@@ -28,7 +29,7 @@ const shantell = Shantell_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.firststepteam.org"),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "First Step Team | Youth-Led Community Impact",
     template: "%s | First Step Team",
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     title: "First Step Team",
     description:
       "Youth-led service, environmental action, culture, and public impact in Metro Atlanta.",
-    url: "https://www.firststepteam.org",
+    url: siteUrl,
     siteName: "First Step Team",
     images: [
       {

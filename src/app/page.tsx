@@ -231,7 +231,7 @@ export default function Home() {
                 size="md"
               />
               <ButtonLink href="/activities" variant="paper">
-                View All 240+ Events
+                View All 250+ Events
               </ButtonLink>
             </div>
           </Reveal>

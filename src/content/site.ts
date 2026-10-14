@@ -26,8 +26,8 @@ export const navItems = [
 export const impactStats = [
   { value: "250+", label: "Registered members" },
   { value: "300+", label: "Student and family volunteers" },
-  { value: "240+", label: "Events organized" },
-  { value: "$17.9k", label: "Raised for nonprofits" },
+  { value: "250+", label: "Events organized" },
+  { value: "$18k+", label: "Raised for nonprofits" },
   { value: "3,000+", label: "Pounds of trash cleared" },
   { value: "35+", label: "Published articles and presentations" },
 ];
@@ -42,7 +42,7 @@ export const programs = [
   },
   {
     title: "Service and Care",
-    label: "$17.9k raised",
+    label: "$18k+ raised",
     description:
       "Food banks, senior performances, MedShare volunteering, bell ringing, and community support work.",
     Icon: HandsPraying,

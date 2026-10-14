@@ -8,7 +8,7 @@ type AnimatedCounterProps = {
   className?: string;
 };
 
-/** Parses values like "3,000+", "$17.9k", "240+" for count-up animation. */
+/** Parses values like "3,000+", "$18k+", "250+" for count-up animation. */
 function parseValue(value: string) {
   const match = value.trim().match(/^(\$?)([\d,]+(?:\.\d+)?)(k?)(\+?)$/);
   if (!match) return null;
