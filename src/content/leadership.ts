@@ -46,18 +46,18 @@ export const leadership: Leader[] = [
   },
   {
     name: "Mason Cao",
-    role: "Secretary & Webmaster",
+    role: "Secretary & Director of Operations",
     photos: [
       {
         src: "/photos/masoncao.png",
-        alt: "Mason Cao, First Step Team secretary and webmaster",
+        alt: "Mason Cao, First Step Team secretary and director of operations",
         objectPosition: "50% 25%",
       },
     ],
     responsibilities: [
       "Keep track of member logistics and information",
       "Track meeting minutes and compile end-of-year reports",
-      "Apply for awards for all volunteers",
+      "Coordinate event scheduling, logistics, and volunteer hour approvals",
       "Manage incoming and outgoing volunteer communications and maintain this website",
     ],
   },
